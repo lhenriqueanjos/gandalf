@@ -4,7 +4,7 @@
 			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/">Início</a>
 		</li>
 		<li role="presentation" class="<?php if ($current_page == "usuario") { echo 'active'; }?>">
-			<a href="#">Usuários</a>
+			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/pesquisar_usuario.php">Usuários</a>
 		</li>
 		<li role="presentation" class="<?php if ($current_page == "sala") { echo 'active'; }?>">
 			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/sala/pesquisar.php">Salas</a>
