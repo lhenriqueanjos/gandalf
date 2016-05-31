@@ -18,7 +18,7 @@
 						<label for="txtNome">Nome:</label>
 						<input type="text" class="form-control" id="txtNome">
 					</div>
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label for="txtMatricula">Matrícula:</label>
 						<input type="number" step="0" class="form-control" id="txtMatricula">
 					</div>
@@ -37,7 +37,7 @@
 						<table class="table table-bordered">
 							<thead>
 								<th>Nome</th>
-								<th>Matrículacula</th>
+								<th>Matrícula</th>
 								<th>Tipo de Usuário</th>
 							</thead>
 							<tbody>

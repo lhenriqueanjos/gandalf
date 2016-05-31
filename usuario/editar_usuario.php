@@ -10,11 +10,18 @@
 						<li>
 							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/pesquisar_usuario.php">Usuários</a>
 						</li>
-						<li class="active">Incluir</li>
+						<li class="active">Editar</li>
 					</ol>
 				</div>
 			</div>
 		
+			<div class="form-group col-xs-5">
+				<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/teste/imagem_teste.jpg" id="imgFoto"> <!- Deve carregar a foto do BD ->
+			</div>
+			<div class="form-group col-xs-5">
+				<label for="txtFoto">Alterar/Incluir Foto:</label>
+				<input type="file" class="form-control" id="txtFoto">
+			</div>
 			<form>
 				<div class="row">
 					<div class="form-group col-xs-7">
@@ -74,12 +81,18 @@
 							<option value="administrador" selected>Cliente</option>
 						</select>
 					</div>
-					<div class="form-group col-xs-5">
-						<label for="txtFoto">Foto:</label>
-						<input type="file" class="form-control" id="txtFoto">
-					</div>
 				</div>
 				
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/controle_acesso.php">
+							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Permissões de Acesso
+						</button>
+						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/vinculo_tag.php">
+							<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span> Desvincular de Tag
+						</button>
+					</div>
+				</div>
 				<div class="row">
 					<div class="form-group col-xs-12">
 						<button type="submit" class="btn btn-default">
