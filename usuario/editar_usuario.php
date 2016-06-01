@@ -76,13 +76,51 @@
 						<label for="txtTipo">Tipo:</label>
 						<br>
 						<select name="txtTipo" class="form-control" disabled>
-							<option value="administrador">Administrador</option>
-							<option value="administrador">Tag/Cartão</option>
-							<option value="administrador" selected>Cliente</option>
+							<option value="Administrador">Administrador</option>
+							<option value="Tag/Cartão">Tag/Cartão</option>
+							<option value="Cliente" selected>Cliente</option>
 						</select>
 					</div>
 				</div>
-				
+
+				<div class="row">
+					<div class="col-xs-12">
+						<table class="table table-bordered table-hover">
+							<thead>
+								<tr>
+									<th colspan=4>Permissoes de acesso</td>
+								</tr>
+							</thead>
+							<thead>
+								<th>Local</th>
+								<th>Dia</th>
+								<th>Início</th>
+								<th>Fim</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Laboratório 1</td>
+									<td>segunda</td> 
+									<td>08:00</td>
+									<td>09:00</td>
+								</tr>
+								<tr>
+									<td>Laboratório 1</td>
+									<td>terça</td> 
+									<td>11:00</td>
+									<td>12:00</td>
+								</tr>
+								<tr>
+									<td>Laboratório 2</td>
+									<td>terça</td> 
+									<td>13:00</td>
+									<td>15:00</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/controle_acesso.php">

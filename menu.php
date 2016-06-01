@@ -10,10 +10,10 @@
 			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/sala/pesquisar.php">Salas</a>
 		</li>
 		<li role="presentation" class="<?php if ($current_page == "tag") { echo 'active'; }?>">
-			<a href="#">TAGs</a>
+			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/tag/cadastrar_tag.php">TAGs</a>
 		</li>
 		<li role="presentation" class="<?php if ($current_page == "historicotag") { echo 'active'; }?>">
-			<a href="#">Histórico de TAGs</a>
+			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/tag/pesquisar_tag.php">Histórico de TAGs</a>
 		</li>
 	</ul>
 </div>
