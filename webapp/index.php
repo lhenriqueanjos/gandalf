@@ -14,7 +14,8 @@
 			</div>
 			
 			<p>
-				Clique em Salas. É possível ver como vai ficar a tela. Ao clicar em incluir, dá pra ver a tela de cadastro. O botão cancelar funciona.
+				Clique em Salas. 
+				É possível ver como vai ficar a tela. Ao clicar em incluir, dá pra ver a tela de cadastro. O botão cancelar funciona.
 				Está tudo em páginas estáticas, por enquanto.
 			</p>
 		</div>
