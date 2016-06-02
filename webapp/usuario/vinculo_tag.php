@@ -1,17 +1,17 @@
 <?php
 	$current_page = "usuario";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/header.php";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/menu.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 ?>
 		<div class="col-xs-10">
 			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 						<li>
-							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/pesquisar_usuario.php">Usuários</a>
+							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/pesquisar_usuario.php">Usuários</a>
 						</li>
 						<li>
-							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/editar_usuario.php">Editar</a>
+							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/editar_usuario.php">Editar</a>
 						</li>
 						<li class="active">Desvincular Tag</li>
 					</ol>
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 <?php	
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/footer.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
 ?>
 
 

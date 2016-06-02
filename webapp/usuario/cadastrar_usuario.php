@@ -1,14 +1,14 @@
 <?php
 	$current_page = "usuario";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/header.php";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/menu.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 ?>
 		<div class="col-xs-10">
 			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 						<li>
-							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/pesquisar_usuario.php">Usuários</a>
+							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/pesquisar_usuario.php">Usuários</a>
 						</li>
 						<li class="active">Incluir</li>
 					</ol>
@@ -85,7 +85,7 @@
 						<button type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
 						</button>
-						<button type="submit" class="btn btn-default" formaction="pesquisar.php">
+						<button type="submit" class="btn btn-default" formaction="pesquisar_usuario.php">
 							<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Cancelar
 						</button>
 					</div>
@@ -93,7 +93,7 @@
 			</form>
 		</div>
 <?php	
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/footer.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
 ?>
 
 

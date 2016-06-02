@@ -1,14 +1,14 @@
 <?php
 	$current_page = "usuario";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/header.php";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/menu.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 ?>
 		<div class="col-xs-10">
 			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 						<li>
-							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/pesquisar_usuario.php">Usuários</a>
+							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/pesquisar_usuario.php">Usuários</a>
 						</li>
 						<li class="active">Editar</li>
 					</ol>
@@ -16,7 +16,7 @@
 			</div>
 		
 			<div class="form-group col-xs-5">
-				<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/teste/imagem_teste.jpg" id="imgFoto"> <!- Deve carregar a foto do BD ->
+				<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/teste/imagem_teste.jpg" id="imgFoto"> <!- Deve carregar a foto do BD ->
 			</div>
 			<div class="form-group col-xs-5">
 				<label for="txtFoto">Alterar/Incluir Foto:</label>
@@ -123,10 +123,10 @@
 
 				<div class="row">
 					<div class="form-group col-xs-5">
-						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/controle_acesso.php">
+						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/controle_acesso.php">
 							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Permissões de Acesso
 						</button>
-						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/usuario/vinculo_tag.php">
+						<button type="submit" class="btn btn-primary btn-block" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/vinculo_tag.php">
 							<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span> Desvincular de Tag
 						</button>
 					</div>
@@ -144,7 +144,7 @@
 			</form>
 		</div>
 <?php	
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/footer.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
 ?>
 
 

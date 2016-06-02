@@ -1,7 +1,7 @@
 <?php
 	$current_page = "sala";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/header.php";
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/menu.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 ?>
 		<div class="col-xs-10">
 			<div class="row">
@@ -76,6 +76,6 @@
 			</form>
 		</div>
 <?php	
-	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/footer.php";
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
 ?>
 
