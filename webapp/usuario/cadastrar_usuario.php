@@ -17,7 +17,7 @@
 		
 			<form>
 				<div class="row">
-					<div class="form-group col-xs-7">
+					<div class="form-group col-xs-9">
 						<label for="txtNome">Nome:</label>
 						<input type="text" class="form-control" id="txtNome">
 					</div>
@@ -25,15 +25,19 @@
 						<label for="txtMatricula">Matrícula:</label>
 						<input type="number" step="0" class="form-control" id="txtMatricula">
 					</div>
-					<div class="form-group col-xs-8">
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-9">
 						<label for="txtDepto">Rua:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
-					<div class="form-group col-xs-2">
+					<div class="form-group col-xs-3">
 						<label for="txtDepto">Número:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
-					<div class="form-group col-xs-3">
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-5">
 						<label for="txtDepto">Bairro:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
@@ -45,7 +49,9 @@
 						<label for="txtDepto">Cidade:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
-					<div class="form-group col-xs-4">
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-2">
 						<label for="txtDepto">Estado:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
@@ -57,11 +63,13 @@
 						<label for="txtTelefone">Telefone:</label>
 						<input type="text" class="form-control" id="txtTelefone" maxlength="18">
 					</div>
-					<div class="form-group col-xs-6">
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-3">
 						<label for="txtDepto">Departamento:</label>
 						<input type="text" class="form-control" id="txtDepto">
 					</div>
-					<div class="form-group col-xs-5">
+					<div class="form-group col-xs-4">
 						<label for="txtTag">Tag:</label> 
 						<input type="number" step="0" class="form-control" id="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
 					</div>
@@ -74,6 +82,8 @@
 							<option value="administrador" selected>Cliente</option>
 						</select>
 					</div>
+				</div>
+				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtFoto">Foto:</label>
 						<input type="file" class="form-control" id="txtFoto">
