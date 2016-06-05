@@ -1,72 +1,85 @@
-CREATE TABLE rel_usuario_tag ( 
-id INTEGER PRIMARY KEY, 
-id_usuario INTEGER, 
-id_tag INTEGER, 
-data_inicio DATE, 
-hora_inicio TIME 
-);
+CREATE TABLE `sala` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` int(11) DEFAULT NULL,
+  `nome` varchar(20) DEFAULT NULL,
+  `descricao` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE tag ( 
-id INTEGER PRIMARY KEY, 
-categoria INTEGER(4), 
-codigo INTEGER 
-) ;
+CREATE TABLE `categoria_tag` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE sala ( 
-id INTEGER PRIMARY KEY, 
-numero INTEGER, 
-nome VARCHAR(20), 
-descricao VARCHAR(100) 
-);
+CREATE TABLE `tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_categoria` int(4) DEFAULT NULL,
+  `codigo` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_tag_categoria_tag` (`id_categoria`),
+  CONSTRAINT `fk_tag_categoria_tag` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE categoria_tag ( 
-id INTEGER(4) PRIMARY KEY, 
-tipo VARCHAR(20) 
-); 
+CREATE TABLE `acesso` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tag` int(11) DEFAULT NULL,
+  `id_sala` int(11) DEFAULT NULL,
+  `data_hora` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_acesso_tag` (`id_tag`),
+  KEY `fk_acesso_sala` (`id_sala`),
+  CONSTRAINT `fk_acesso_sala` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_acesso_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE usuario ( 
-id INTEGER PRIMARY KEY, 
-categoria INTEGER, 
-vinculo_tag INTEGER, 
-matricula INTEGER, 
-nome VARCHAR(50), 
-FOREIGN KEY(vinculo_tag) REFERENCES rel_usuario_tag (id) ON UPDATE CASCADE ON DELETE CASCADE 
-);
+CREATE TABLE `categoria_usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE categoria_usuario ( 
-id INTEGER PRIMARY KEY, 
-tipo VARCHAR(20) 
-);
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_categoria` int(11) DEFAULT NULL,
+  `matricula` int(11) DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_usuario_categoria_usuario` (`id_categoria`),
+  CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE acesso ( 
-id INTEGER PRIMARY KEY, 
-id_tag INTEGER, 
-id_sala INTEGER, 
-data_hora DATETIME, 
-FOREIGN KEY(id_tag) REFERENCES tag (id) ON UPDATE CASCADE ON DELETE CASCADE, 
-FOREIGN KEY(id_sala) REFERENCES sala (id) ON UPDATE CASCADE ON DELETE CASCADE 
-);
+CREATE TABLE `permissao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_sala` int(11) DEFAULT NULL,
+  `id_tag` int(11) DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  `hora_fim` time DEFAULT NULL,
+  `data_inicio_permissao` date DEFAULT NULL,
+  `data_fim_permissao` date DEFAULT NULL,
+  `segunda` int(1) DEFAULT NULL,
+  `terca` int(1) DEFAULT NULL,
+  `quarta` int(1) DEFAULT NULL,
+  `quinta` int(1) DEFAULT NULL,
+  `sexta` int(1) DEFAULT NULL,
+  `sabado` int(1) DEFAULT NULL,
+  `domingo` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_permissao_tag` (`id_tag`),
+  KEY `fk_permissao_sala` (`id_sala`),
+  CONSTRAINT `fk_permissao_sala` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_permissao_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE permissoes ( 
-id INTEGER PRIMARY KEY, 
-id_sala INTEGER, 
-id_tag INTEGER, 
-hora_inicio TIME, 
-hora_fim TIME, 
-data_inicio_permissao DATE, 
-data_fim_permissao DATE, 
-segunda INT(1), 
-terca INT(1), 
-quarta INT(1), 
-quinta INT(1), 
-sexta INT(1), 
-sabado INT(1), 
-domingo INT(1), 
-FOREIGN KEY(id_sala) REFERENCES sala (id) ON UPDATE CASCADE ON DELETE CASCADE, 
-FOREIGN KEY(id_tag) REFERENCES tag (id) ON UPDATE CASCADE ON DELETE CASCADE 
-);
-
-ALTER TABLE rel_usuario_tag ADD FOREIGN KEY(id_usuario) REFERENCES usuario (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE rel_usuario_tag ADD FOREIGN KEY(id_tag) REFERENCES tag (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE tag ADD FOREIGN KEY(categoria) REFERENCES categoria_tag (id) ON UPDATE CASCADE ON DELETE CASCADE;
-ALTER TABLE usuario ADD FOREIGN KEY(categoria) REFERENCES categoria_usuario (id) ON UPDATE CASCADE ON DELETE CASCADE;
+CREATE TABLE `rel_usuario_tag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_tag` int(11) DEFAULT NULL,
+  `data_inicio` date DEFAULT NULL,
+  `hora_inicio` time DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_rel_usuario_tag_tag` (`id_tag`),
+  KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
+  CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
