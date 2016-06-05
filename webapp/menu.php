@@ -28,7 +28,7 @@
 		<!-- Controle de Acesso -->
 
 		<li role="presentation" class="<?php if ($current_page == "sala") { echo 'active'; }?>">
-			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">Salas</a>
+			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">Sala</a>
 		</li>
 	</ul>
 </div>
