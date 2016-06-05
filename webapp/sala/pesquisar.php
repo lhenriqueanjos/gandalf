@@ -7,7 +7,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
-						<li class="active">Salas</li>
+						<li class="active">Sala</li>
 					</ol>
 				</div>
 			</div>

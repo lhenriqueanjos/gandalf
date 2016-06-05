@@ -8,7 +8,7 @@
 				<div class="col-xs-12">
 					<ol class="breadcrumb">
 						<li>
-							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">Salas</a>
+							<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">Sala</a>
 						</li>
 						<li class="active">Editar</li>
 					</ol>
