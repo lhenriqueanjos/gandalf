@@ -115,7 +115,7 @@
 									} while($linha = mysql_fetch_assoc($resultado));
 									
 									// tira o resultado da busca da memória
-									mysql_free_result($dados);
+									mysql_free_result($resultado);
 							?>
 							</tbody>
 						</table>
