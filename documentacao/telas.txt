@@ -1,0 +1,46 @@
+perfis: ADMINISTRADOR, TAG, CLIENTE
+
+telas:
+	login
+		campos usuário e senha
+		o nome de usuário para cliente ou administrador pode ser o e-mail. para tag, pode ser o número da TAG
+		caso o usuário seja cliente ou administrador, redirecionar para a página inicial
+		caso o usuário seja cliente ou administrador, redirecionar para a página de histórico de acessos, mostrando apenas os acessos daquela TAG
+	Pesquisar, Remover e Alterar Usuários
+		usuário do perfil ADMINISTRADOR:
+			acessa a opção de menu Usuários e vai para a tela de pesquisa. ao pesquisar, ele pode selecionar usuários para alteração ou remoção
+			ao remover, fazer exclusão lógica e salvar o motivo
+			colocar um botão que exibe a quantidade de entradas de um usuário selecionado
+			a tela tem um botão incluir, que redireciona para a página Incluir Usuário
+	Incluir Usuário (dos tipos CLIENTE e ADMINISTRADOR)
+		usuário do perfil CLIENTE:
+			acessa diretamente essa tela pela opção de menu Usuários
+		usuário do perfil ADMINISTRADOR:
+			acessa essa tela pelo botão Incluir Usuário na tela de pesquisa
+		a tela tem os campos da tabela Usuario. o combo PERFIL vem com as opções ADMINISTRADOR e CLIENTE. Caso o usuário seja CLIENTE, vem com a opção CLIENTE selecionada e desabilitado.
+	Cadastro de TAG (pesquisar, incluir, excluir, remover)
+		tela de cadastro com apenas 1 campo (número da TAG)
+		ao acessar o menu, o usuário vai para a tela de pesquisa. ao pesquisar, ele pode selecionar tags para alteração ou remoção
+		colocar botão incluir (redireciona para a tela de inclusão)
+		acessível para usuários do perfil ADMINISTRADOR
+		ao remover, fazer exclusão lógica e salvar o motivo
+	Associar TAG
+		ao acessar o menu, o usuário vai para a tela de pesquisa. ele pesquisa o usuário por nome, e-mail, etc, seleciona o usuário e clica em Associar. O sistema redireciona para a tela de Associar TAG, que exibe informações do usuario e uma lista de TAGs que estejam sem vínculo
+		acessível para usuários do perfil ADMINISTRADOR
+	Histórico de acesso
+		ao acessar o menu, o usuário vai para a tela de pesquisa. ele pesquisa a tag pelo número. O sistema exibe em uma tabela as entradas daquela TAG (mostrar nome do usuário dono da tag, data e hora). Caso o usuário não preencha o número da TAG, exibir as entradas de todas as TAGs. Caso o usuário seja cliente, exibir apenas os acessos das TAGs associadas a ele
+		acessível para usuários do perfil ADMINISTRADOR ou cliente
+	Controle de Acesso
+		ao acessar o menu, o usuário vai para uma tela que contém apenas o campo número da TAG e um botão Controle de Acesso. Se o sistema conseguir encontrar a TAG, exibe uma lista com os dias da semana, a hora inicial e a 
+		seleciona uma tag e define os dias com acesso, a hora inicial e a final
+		acessível para usuários do perfil ADMINISTRADOR
+	Cadastro de Salas
+		pesquisar, incluir, alterar e remover
+
+	Opções do Menu
+		Usuário
+		TAG
+		Associar TAG
+		Histórico
+		Controle de Acesso
+		Salas
