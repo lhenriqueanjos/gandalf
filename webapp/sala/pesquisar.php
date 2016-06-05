@@ -59,7 +59,7 @@
 		
 			<form action="#" method="POST">
 				<div class="row">
-					<div class="form-group col-xs-5">
+					<div class="form-group col-xs-3">
 						<label for="txtNome">Nome:</label>
 						<input type="text" class="form-control" id="txtNome" name="txtNome">
 					</div>
@@ -67,7 +67,7 @@
 						<label for="txtNumero">Número:</label>
 						<input type="number" step="0" class="form-control" id="txtNumero" name="txtNumero">
 					</div>
-					<div class="form-group col-xs-5">
+					<div class="form-group col-xs-7">
 						<label for="txtDescricao">Descrição:</label>
 						<input type="text" class="form-control" id="txtDescricao" name="txtDescricao">
 					</div>
@@ -93,6 +93,7 @@
 						?>
 						<table class="table table-bordered table-hover">
 							<thead>
+								<th style="width: 30px;" />
 								<th>Nome</th>
 								<th>Número</th>
 								<th>Descrição</th>
@@ -103,6 +104,9 @@
 									do {
 							 ?>
 								<tr>
+									<td>
+										<input type="checkbox" name="<?=$linha['id']?>" />
+									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['numero']?></td> 
 									<td><?=$linha['descricao']?></td>
