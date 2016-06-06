@@ -1,11 +1,11 @@
 <?php
 
-// montagem da query2
+// query para selecionar o tipo conforme a id_categoria
+// ele está num arquivo separado pois precisa ser executado a cada ciclo do while
+$queryCategoria = "SELECT tipo FROM categoria_usuario WHERE id = ".$linha['id_categoria']." ";
 
-$query2 = "SELECT tipo FROM categoria_usuario WHERE id = ".$temp." ";
+$resultado2 = mysqli_query($link, $queryCategoria) or die(mysqli_error($link));
 
-$resultado2 = mysqli_query($link, $query2) or die(mysqli_error());
-
-echo $resultado2;
+$row = mysqli_fetch_assoc($resultado2);
 
 ?>

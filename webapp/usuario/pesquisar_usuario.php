@@ -39,6 +39,14 @@
 		$resultado = mysqli_query($link, $query) or die(mysql_error());
 		
 		$linha = mysqli_fetch_assoc($resultado);
+		
+		// // query para selecionar o tipo conforme a id_categoria
+		// $queryCategoria = "SELECT tipo FROM categoria_usuario WHERE id = ".$linha['id_categoria']." ";
+
+		// $resultado2 = mysqli_query($link, $queryCategoria) or die(mysqli_error($link));
+
+		// $row = mysqli_fetch_assoc($resultado2);
+		// //
 
 		$total = mysqli_num_rows($resultado);
 	}
@@ -100,7 +108,7 @@
 									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['matricula']?></td> 
-									<td><?php echo $temp=$linha['id_categoria']; $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/usuario/consulta_id.php"; ?></td> <!- Para corrigir ->
+									<td><?php require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/usuario/consulta_id.php"; ?><?=$row['tipo'] ?></td>
 								</tr>
 							<?php 
 									} while($linha = mysqli_fetch_assoc($resultado));
