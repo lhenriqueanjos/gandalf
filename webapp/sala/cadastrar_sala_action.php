@@ -11,21 +11,21 @@ $numeroSala = $_POST['txtNumero'];
 $descricaoSala = $_POST['txtDescricao'];
 
 // evitar sql inject
-$nomeSala = mysql_escape_string($nomeSala);
-$numeroSala = mysql_escape_string($numeroSala);
-$descricaoSala = mysql_escape_string($descricaoSala);
+$nomeSala = mysqli_real_escape_string($link, $nomeSala);
+$numeroSala = mysqli_real_escape_string($link, $numeroSala);
+$descricaoSala = mysqli_real_escape_string($link, $descricaoSala);
 
 // montagem da query
 $query = "INSERT INTO sala (nome, numero, descricao) VALUES ('".$nomeSala."', ".$numeroSala.", '".$descricaoSala."')";
 
 // Executa a query
-$inserir = mysql_query($query);
+$inserir = mysqli_query($link, $query);
 
 if (!$inserir) {
 	// TODO redirecionar para uma sala de erro padronizada
 	echo "Não foi possível inserir a sala, tente novamente.";
 	// Exibe dados sobre o erro:
-	echo "Dados sobre o erro:" . mysql_error();
+	echo "Dados sobre o erro:" . mysqli_error();
 }
 
 $current_page = "sala";
