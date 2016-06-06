@@ -1,10 +1,10 @@
 <?php
 
-$link = mysql_connect('localhost:3306', 'root', 'root');
+$link = mysqli_connect('localhost:3306', 'root', 'root');
 if (!$link) {
-    die('Não foi possível conectar: ' . mysql_error());
+    die('Não foi possível conectar: ' . mysqli_connect_error());
 }
 
-mysql_select_db("gandalf", $link) or print(mysql_error()); 
+mysqli_select_db($link, "gandalf") or print(mysqli_error()); 
 
 ?>

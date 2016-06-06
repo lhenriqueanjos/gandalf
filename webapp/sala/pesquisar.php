@@ -18,9 +18,9 @@
 		$descricaoSala = $_POST['txtDescricao'];
 
 		// evitar sql inject
-		$nomeSala = mysql_escape_string($nomeSala);
-		$numeroSala = mysql_escape_string($numeroSala);
-		$descricaoSala = mysql_escape_string($descricaoSala);
+		$nomeSala = mysqli_real_escape_string($link, $nomeSala);
+		$numeroSala = mysqli_real_escape_string($link, $numeroSala);
+		$descricaoSala = mysqli_real_escape_string($link, $descricaoSala);
 
 		$whereAnd = "WHERE";
 
@@ -41,11 +41,11 @@
 		}
 		$query = $query."order by nome;";
 
-		$resultado = mysql_query($query, $link) or die(mysql_error());
+		$resultado = mysqli_query($link, $query) or die(mysqli_error());
 		
-		$linha = mysql_fetch_assoc($resultado);
+		$linha = mysqli_fetch_assoc($resultado);
 
-		$total = mysql_num_rows($resultado);
+		$total = mysqli_num_rows($resultado);
 	}
 ?>
 		<div class="col-xs-10">
@@ -112,10 +112,10 @@
 									<td><?=$linha['descricao']?></td>
 								</tr>
 							<?php 
-									} while($linha = mysql_fetch_assoc($resultado));
+									} while($linha = mysqli_fetch_assoc($resultado));
 									
 									// tira o resultado da busca da memória
-									mysql_free_result($resultado);
+									mysqli_free_result($resultado);
 							?>
 							</tbody>
 						</table>

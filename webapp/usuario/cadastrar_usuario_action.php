@@ -20,18 +20,18 @@ $deptoUsuario = $_POST['txtDepto'];
 $fotoUsuario = $_POST['txtFoto'];
 
 // evitar sql inject
-$nomeUsuario = mysql_escape_string($nomeUsuario);
-$matriculaUsuario = mysql_escape_string($matriculaUsuario);
-$ruaUsuario = mysql_escape_string($ruaUsuario);
-$numeroUsuario = mysql_escape_string($numeroUsuario);
-$bairroUsuario = mysql_escape_string($bairroUsuario);
-$cepUsuario = mysql_escape_string($cepUsuario);
-$cidadeUsuario = mysql_escape_string($cidadeUsuario);
-$estadoUsuario = mysql_escape_string($estadoUsuario);
-$emailUsuario = mysql_escape_string($emailUsuario);
-$telefoneUsuario = mysql_escape_string($telefoneUsuario);
-$deptoUsuario = mysql_escape_string($deptoUsuario);
-$fotoUsuario = mysql_escape_string($fotoUsuario);
+$nomeUsuario = mysqli_real_escape_string($link, $nomeUsuario);
+$matriculaUsuario = mysqli_real_escape_string($link, $matriculaUsuario);
+$ruaUsuario = mysqli_real_escape_string($link, $ruaUsuario);
+$numeroUsuario = mysqli_real_escape_string($link, $numeroUsuario);
+$bairroUsuario = mysqli_real_escape_string($link, $bairroUsuario);
+$cepUsuario = mysqli_real_escape_string($link, $cepUsuario);
+$cidadeUsuario = mysqli_real_escape_string($link, $cidadeUsuario);
+$estadoUsuario = mysqli_real_escape_string($link, $estadoUsuario);
+$emailUsuario = mysqli_real_escape_string($link, $emailUsuario);
+$telefoneUsuario = mysqli_real_escape_string($link, $telefoneUsuario);
+$deptoUsuario = mysqli_real_escape_string($link, $deptoUsuario);
+$fotoUsuario = mysqli_real_escape_string($link, $fotoUsuario);
 
 // montagem da query
 $query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, email, foto) 
@@ -39,13 +39,13 @@ VALUES (".$matriculaUsuario.", '".$nomeUsuario."', '".$deptoUsuario."', '".$ruaU
 '".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$emailUsuario."', '".$fotoUsuario."')";
 
 // Executa a query
-$inserir = mysql_query($query);
+$inserir = mysqli_query($link, $query);
 
 if (!$inserir) {
 	// TODO redirecionar para uma sala de erro padronizada
 	echo "Não foi possível inserir o usuário, tente novamente.";
 	// Exibe dados sobre o erro:
-	echo "Dados sobre o erro:" . mysql_error();
+	echo "Dados sobre o erro:" . mysqli_error($link);
 }
 
 $current_page = "usuario";

@@ -15,30 +15,10 @@
 		// variáveis para insert
 		$nomeUsuario = $_POST['txtNome'];
 		$matriculaUsuario = $_POST['txtMatricula'];
-		$ruaUsuario = $_POST['txtRua'];
-		$numeroUsuario = $_POST['txtNumero'];
-		$bairroUsuario = $_POST['txtBairro'];
-		$cepUsuario = $_POST['txtCEP'];
-		$cidadeUsuario = $_POST['txtCidade'];
-		$estadoUsuario = $_POST['txtEstado'];
-		$emailUsuario = $_POST['txtEmail'];
-		$telefoneUsuario = $_POST['txtTelefone'];
-		$deptoUsuario = $_POST['txtDepto'];
-		$fotoUsuario = $_POST['txtFoto'];
 
 		// evitar sql inject
-		$nomeUsuario = mysql_escape_string($nomeUsuario);
-		$matriculaUsuario = mysql_escape_string($matriculaUsuario);
-		$ruaUsuario = mysql_escape_string($ruaUsuario);
-		$numeroUsuario = mysql_escape_string($numeroUsuario);
-		$bairroUsuario = mysql_escape_string($bairroUsuario);
-		$cepUsuario = mysql_escape_string($cepUsuario);
-		$cidadeUsuario = mysql_escape_string($cidadeUsuario);
-		$estadoUsuario = mysql_escape_string($estadoUsuario);
-		$emailUsuario = mysql_escape_string($emailUsuario);
-		$telefoneUsuario = mysql_escape_string($telefoneUsuario);
-		$deptoUsuario = mysql_escape_string($deptoUsuario);
-		$fotoUsuario = mysql_escape_string($fotoUsuario);
+		$nomeUsuario = mysqli_real_escape_string($link, $nomeUsuario);
+		$matriculaUsuario = mysqli_real_escape_string($link, $matriculaUsuario);
 		
 		$whereAnd = "WHERE";
 
@@ -56,11 +36,11 @@
 
 		$query = $query."order by nome;";
 
-		$resultado = mysql_query($query, $link) or die(mysql_error());
+		$resultado = mysqli_query($link, $query) or die(mysql_error());
 		
-		$linha = mysql_fetch_assoc($resultado);
+		$linha = mysqli_fetch_assoc($resultado);
 
-		$total = mysql_num_rows($resultado);
+		$total = mysqli_num_rows($resultado);
 	}
 ?>
 		<div class="col-xs-10">
@@ -72,15 +52,15 @@
 				</div>
 			</div>
 		
-			<form>
+			<form action="#" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtNome">Nome:</label>
-						<input type="text" class="form-control" id="txtNome">
+						<input type="text" class="form-control" id="txtNome" name="txtNome">
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtMatricula">Matrícula:</label>
-						<input type="number" step="0" class="form-control" id="txtMatricula">
+						<input type="number" step="0" class="form-control" id="txtMatricula" name="txtMatricula">
 					</div>
 				</div>
 				
@@ -91,13 +71,7 @@
 						</button>
 					</div>
 				</div>
-
-
-
-
-
-
-
+				
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Usuários</h3>
@@ -126,13 +100,13 @@
 									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['matricula']?></td> 
-									<td><?=$linha['id_categoria']?></td>
+									<td><?php echo $temp=$linha['id_categoria']; $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/usuario/consulta_id.php"; ?></td> <!- Para corrigir ->
 								</tr>
 							<?php 
-									} while($linha = mysql_fetch_assoc($resultado));
+									} while($linha = mysqli_fetch_assoc($resultado));
 									
 									// tira o resultado da busca da memória
-									mysql_free_result($resultado);
+									mysqli_free_result($resultado);
 							?>
 							</tbody>
 						</table>
@@ -178,13 +152,7 @@
 							} 
 						?>
 					</div>
-				</div>
-
-
-
-
-				
-				
+				</div>				
 			</form>
 		</div>
 <?php	
