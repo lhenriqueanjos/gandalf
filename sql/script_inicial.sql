@@ -44,6 +44,16 @@ CREATE TABLE `usuario` (
   `id_categoria` int(11) DEFAULT NULL,
   `matricula` int(11) DEFAULT NULL,
   `nome` varchar(50) DEFAULT NULL,
+  `departamento` varchar(25) DEFAULT NULL,
+  `rua` varchar(100) DEFAULT NULL,
+  `numero` int(5) DEFAULT NULL,
+  `bairro` varchar(25) DEFAULT NULL,
+  `cep` varchar(9) DEFAULT NULL,
+  `cidade` varchar(25) DEFAULT NULL,
+  `estado` varchar(25) DEFAULT NULL,
+  `telefone` varchar(16) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `foto` varbinary(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_categoria_usuario` (`id_categoria`),
   CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -83,3 +93,10 @@ CREATE TABLE `rel_usuario_tag` (
   CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `sala`(numero,nome,descricao) VALUES (101,"Laboratório 1","laboratório de informática para pesquisas");
+INSERT INTO `categoria_tag` (tipo) VALUES ("Administrador");
+INSERT INTO `categoria_tag` (tipo) VALUES ("Cliente");
+INSERT INTO `categoria_tag` (tipo) VALUES ("TAG/Cartão");
+INSERT INTO `categoria_usuario` (tipo) VALUES ("Administrador");
+INSERT INTO `categoria_usuario` (tipo) VALUES ("Usuário");
