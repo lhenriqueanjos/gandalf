@@ -15,63 +15,63 @@
 				</div>
 			</div>
 		
-			<form>
+			<form action="cadastrar_usuario_action.php" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-9">
 						<label for="txtNome">Nome:</label>
-						<input type="text" class="form-control" id="txtNome">
+						<input type="text" class="form-control" id="txtNome" name="txtNome" required="required">
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtMatricula">Matrícula:</label>
-						<input type="number" step="0" class="form-control" id="txtMatricula">
+						<input type="number" step="0" class="form-control" id="txtMatricula" name="txtMatricula" required="required">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-9">
-						<label for="txtDepto">Rua:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtRua">Rua:</label>
+						<input type="text" class="form-control" id="txtRua" name="txtRua" required="required">
 					</div>
 					<div class="form-group col-xs-3">
-						<label for="txtDepto">Número:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtNumero">Número:</label>
+						<input type="text" class="form-control" id="txtNumero" name="txtNumero" required="required">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-5">
-						<label for="txtDepto">Bairro:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtBairro">Bairro:</label>
+						<input type="text" class="form-control" id="txtBairro" name="txtBairro" required="required">
 					</div>
 					<div class="form-group col-xs-3">
-						<label for="txtDepto">CEP:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtCEP">CEP:</label>
+						<input type="text" class="form-control" id="txtCEP" name="txtCEP" required="required">
 					</div>
 					<div class="form-group col-xs-4">
-						<label for="txtDepto">Cidade:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtCidade">Cidade:</label>
+						<input type="text" class="form-control" id="txtCidade" name="txtCidade" required="required">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-2">
-						<label for="txtDepto">Estado:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<label for="txtEstado">Estado:</label>
+						<input type="text" class="form-control" id="txtEstado" name="txtEstado" required="required">
 					</div>
 					<div class="form-group col-xs-6">
 						<label for="txtEmail">E-mail:</label>
-						<input type="email" class="form-control" id="txtEmail">
+						<input type="email" class="form-control" id="txtEmail" name="txtEmail" required="required">
 					</div>
 					<div class="form-group col-xs-4">
 						<label for="txtTelefone">Telefone:</label>
-						<input type="text" class="form-control" id="txtTelefone" maxlength="18">
+						<input type="text" class="form-control" id="txtTelefone" maxlength="18" name="txtTelefone" required="required">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtDepto">Departamento:</label>
-						<input type="text" class="form-control" id="txtDepto">
+						<input type="text" class="form-control" id="txtDepto" name="txtDepto" required="required">
 					</div>
 					<div class="form-group col-xs-4">
 						<label for="txtTag">Tag:</label> 
-						<input type="number" step="0" class="form-control" id="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
+						<input type="number" step="0" class="form-control" id="txtTag" name="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtTipo">Tipo:</label>
@@ -86,7 +86,7 @@
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtFoto">Foto:</label>
-						<input type="file" class="form-control" id="txtFoto">
+						<input type="file" class="form-control" id="txtFoto" name="txtFoto">
 					</div>
 				</div>
 				

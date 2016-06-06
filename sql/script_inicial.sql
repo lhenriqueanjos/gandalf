@@ -41,7 +41,7 @@ CREATE TABLE `categoria_usuario` (
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_categoria` int(11) DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT 2,
   `matricula` int(11) DEFAULT NULL,
   `nome` varchar(50) DEFAULT NULL,
   `departamento` varchar(25) DEFAULT NULL,
