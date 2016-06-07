@@ -40,14 +40,6 @@
 		
 		$linha = mysqli_fetch_assoc($resultado);
 		
-		// // query para selecionar o tipo conforme a id_categoria
-		// $queryCategoria = "SELECT tipo FROM categoria_usuario WHERE id = ".$linha['id_categoria']." ";
-
-		// $resultado2 = mysqli_query($link, $queryCategoria) or die(mysqli_error($link));
-
-		// $row = mysqli_fetch_assoc($resultado2);
-		// //
-
 		$total = mysqli_num_rows($resultado);
 	}
 ?>

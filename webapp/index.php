@@ -32,7 +32,7 @@
 							<th>Local</th>
 						</thead>
 						<tbody>
-						<?php require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/index_historico.php"; ?>
+						<?php require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/index_historico.php";  ?>
 						</tbody>
 					</table>
 				</div>

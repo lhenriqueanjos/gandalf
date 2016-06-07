@@ -2,6 +2,18 @@
 	$current_page = "historicotag";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
+	
+	// abrir conexão
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
+
+	// query para carregar a tabela de tags
+	$sql = "SELECT id, codigo FROM tag"; // TODO -> associar ao usuário logado, para puxar o histórico correto
+	$result = mysqli_query($link, $sql);
+
+	$total = mysqli_num_rows($result);
+    
+    $row = mysqli_fetch_assoc($result); 
+
 ?>
 		<div class="col-xs-10">
 			<div class="row">
@@ -11,16 +23,23 @@
 					</ol>
 				</div>
 			</div>
-		
+
 			<form>
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG">
 							<option selected>selecione </option>
-							<option value="123456789">123456789</option>
-							<option value="987654321">987654321</option>
-							<option value="548768127">548768127</option>
+							<?php
+								do {
+							?>
+							<option value="<?=$row['id']?>"><?=$row['codigo']?></option>
+							<?php
+								}while($row = mysqli_fetch_assoc($result));
+								
+								// tira o resultado da busca da memória
+								mysqli_free_result($result);
+							?>							
 						</select>
 					</div>
 				</div>
@@ -51,39 +70,19 @@
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
-									<th colspan=4>Histórico de acesso</td>
+									<th colspan=2>Últimos 5 acessos</td>
 								</tr>
 							</thead>
 							<thead>
+								<th>Acesso</th>
 								<th>Local</th>
-								<th>Dia</th>
-								<th>Início</th>
-								<th>Fim</th>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Laboratório 1</td>
-									<td>segunda</td> 
-									<td>08:00</td>
-									<td>08:50</td>
-								</tr>
-								<tr>
-									<td>Laboratório 1</td>
-									<td>terça</td> 
-									<td>11:00</td>
-									<td>12:00</td>
-								</tr>
-								<tr>
-									<td>Laboratório 2</td>
-									<td>terça</td> 
-									<td>13:00</td>
-									<td>14:28</td>
-								</tr>
+							<?php require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/tag/pesquisar_tag_historico.php"; ?>
 							</tbody>
 						</table>
 					</div>
-				</div>
-				
+				</div>				
 			</form>
 		</div>
 <?php	
