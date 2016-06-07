@@ -2,6 +2,7 @@
 <head>
 	<title>Sistema de Controle de Acesso</title>
 	<link rel="stylesheet" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/bootstrap/css/bootstrap.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
 </head>
 <body>
 

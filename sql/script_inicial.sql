@@ -4,13 +4,13 @@ CREATE TABLE `sala` (
   `nome` varchar(20) DEFAULT NULL,
   `descricao` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `categoria_tag` (
   `id` int(4) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -19,7 +19,7 @@ CREATE TABLE `tag` (
   PRIMARY KEY (`id`),
   KEY `fk_tag_categoria_tag` (`id_categoria`),
   CONSTRAINT `fk_tag_categoria_tag` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `acesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,13 +31,13 @@ CREATE TABLE `acesso` (
   KEY `fk_acesso_sala` (`id_sala`),
   CONSTRAINT `fk_acesso_sala` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_acesso_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `categoria_usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,7 +57,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id`),
   KEY `fk_usuario_categoria_usuario` (`id_categoria`),
   CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `permissao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -79,7 +79,7 @@ CREATE TABLE `permissao` (
   KEY `fk_permissao_sala` (`id_sala`),
   CONSTRAINT `fk_permissao_sala` FOREIGN KEY (`id_sala`) REFERENCES `sala` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_permissao_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `rel_usuario_tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -92,7 +92,7 @@ CREATE TABLE `rel_usuario_tag` (
   KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
   CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `sala`(numero,nome,descricao) VALUES (101,"Laboratório 1","laboratório de informática para pesquisas");
 INSERT INTO `categoria_tag` (tipo) VALUES ("Administrador");
