@@ -14,20 +14,27 @@
     
     $row = mysqli_fetch_assoc($result); 
 	
-	$opt = " ";
+	$var1 = " ";
+	$var2 = " ";
 	
 	// verifica se já clicou no pesquisar e consulta o banco de acordo com o select do usuário
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 		$opt = $_POST['opt'];
 		
-		// $sqlForm = "SELECT id_usuario FROM tag";
-		// $resultForm = mysqli_query($link, $sql);
-
-		// $totalForm = mysqli_num_rows($result);
+		// TODO incluir no filtro desse SQL a data fim da permissao = a NULL, para nao captar usuario inativo
+		$sqlForm = "SELECT usuario.nome, categoria_usuario.tipo 
+					FROM rel_usuario_tag
+					JOIN usuario
+					ON rel_usuario_tag.id_usuario = usuario.id
+					JOIN categoria_usuario
+					ON categoria_usuario.id = usuario.id_categoria
+					WHERE rel_usuario_tag.id_usuario = $opt";
+		$resultForm = mysqli_query($link, $sqlForm);		
+		$rowForm = mysqli_fetch_assoc($resultForm); 
 		
-		// $rowForm = mysqli_fetch_assoc($result); 
-		
+		$var1 = $rowForm['nome'];
+		$var2 = $rowForm['tipo'];
 	}
 ?>
 		<div class="col-xs-10">
@@ -44,7 +51,7 @@
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG" name="opt">
-							<option selected>selecione </option>
+							<option selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
 							<?php
 								do {
 							?>
@@ -72,11 +79,11 @@
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtNomeAp">Nome:</label>
-						<input type="text" class="form-control" id="txtNomeAp" value="<?=$opt ?>" disabled> 
+						<input type="text" class="form-control" id="txtNomeAp" value="<?=$var1 ?>" disabled> 
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtTipoAp">Tipo:</label>
-						<input type="text" class="form-control" id="txtTipoAp" value="<?=$opt ?>" disabled>
+						<input type="text" class="form-control" id="txtTipoAp" value="<?=$var2 ?>" disabled>
 					</div>
 				</div>
 			</form>
