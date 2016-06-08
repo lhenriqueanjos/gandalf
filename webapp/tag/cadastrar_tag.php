@@ -2,6 +2,18 @@
 	$current_page = "tag";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
+	
+	// abrir conexão
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
+
+	// query para carregar a tabela de tags
+	$sql = "SELECT id, codigo FROM tag"; // TODO -> associar ao usuário logado, para puxar o histórico correto
+	$result = mysqli_query($link, $sql);
+
+	$total = mysqli_num_rows($result);
+    
+    $row = mysqli_fetch_assoc($result); 
+
 ?>
 		<div class="col-xs-10">
 			<div class="row">
@@ -40,15 +52,23 @@
 					</div>
 				</div>
 			</form>
-			<form>
+			
+			<form action="#" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
-						<select class="form-control" id="selTAG">
-							<option selected>selecione </option>
-							<option value="123456789">123456789</option>
-							<option value="987654321">987654321</option>
-							<option value="548768127">548768127</option>
+						<select class="form-control" id="selTAG" name="opt">
+							<option selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
+							<?php
+								do {
+							?>
+							<option value="<?=$row['id']?>"><?=$row['codigo']?></option>
+							<?php
+								}while($row = mysqli_fetch_assoc($result));
+								
+								// tira o resultado da busca da memória
+								mysqli_free_result($result);
+							?>							
 						</select>
 					</div>
 				</div>
