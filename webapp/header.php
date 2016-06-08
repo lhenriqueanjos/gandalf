@@ -17,7 +17,7 @@
 						<h5>Bem-vindo, Usuário!</h5>
 					</div>
 					<div class="row text-left">
-						<h5><a href="login.php">Sair</a></h5>
+						<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login.php">Sair</a></h5>
 					</div>
 				</div>
 			</div>
