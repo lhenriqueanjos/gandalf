@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>Sistema de Controle de Acesso</title>
-	<link rel="stylesheet" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" 
+		href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/bootstrap/css/bootstrap-darkly.min.css">
 </head>
 <body>
 
