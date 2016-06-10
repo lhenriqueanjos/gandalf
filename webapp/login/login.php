@@ -20,6 +20,22 @@
 		<div class="col-xs-4">
 		</div>
 		<div class="col-xs-3">
+
+			<?php 
+				$naoEncontrado = $_GET['naoEncontrado'];
+				if (isset($naoEncontrado)) {
+			?>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="alert alert-danger" role="alert">
+						<span class="glyphicon glyphicon-ban-circle"></span> Usuário ou senha inválidos.
+					</div>
+				</div>
+			</div>
+			<?php
+				}
+			?>
+
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Login</h3>
