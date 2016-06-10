@@ -16,7 +16,7 @@
 			</div>
 		
 			<div class="form-group col-xs-5">
-				<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/teste/imagem_teste.jpg" id="imgFoto"> <!- Deve carregar a foto do BD ->
+				<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/teste/imagem_teste.jpg" id="imgFoto"> <!-- Deve carregar a foto do BD -->
 			</div>
 			<div class="form-group col-xs-5">
 				<label for="txtFoto">Alterar/Incluir Foto:</label>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtTag">Tag:</label> 
-						<input type="number" step="0" class="form-control" id="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
+						<input type="number" step="0" class="form-control" id="txtTag" disabled> <!-- Este deve ficar inativo quando não for acessado por um administrador -->
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtTipo">Tipo:</label>
