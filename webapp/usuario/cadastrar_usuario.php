@@ -27,33 +27,33 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="form-group col-xs-3">
+						<label for="txtCEP">CEP:</label>
+						<input type="text" class="form-control" id="cep" value="" name="txtCEP" maxlength="9" onblur="pesquisacep(this.value);" onKeyPress="jQuery();" required="required">
+					</div>
 					<div class="form-group col-xs-9">
 						<label for="txtRua">Rua:</label>
-						<input type="text" class="form-control" id="txtRua" name="txtRua" required="required">
+						<input type="text" class="form-control" id="rua" name="txtRua" required="required">
 					</div>
+				</div>
+				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtNumero">Número:</label>
 						<input type="text" class="form-control" id="txtNumero" name="txtNumero" required="required">
 					</div>
-				</div>
-				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtBairro">Bairro:</label>
-						<input type="text" class="form-control" id="txtBairro" name="txtBairro" required="required">
-					</div>
-					<div class="form-group col-xs-3">
-						<label for="txtCEP">CEP:</label>
-						<input type="text" class="form-control" id="txtCEP" name="txtCEP" required="required">
+						<input type="text" class="form-control" id="bairro" name="txtBairro" required="required">
 					</div>
 					<div class="form-group col-xs-4">
 						<label for="txtCidade">Cidade:</label>
-						<input type="text" class="form-control" id="txtCidade" name="txtCidade" required="required">
+						<input type="text" class="form-control" id="cidade" name="txtCidade" required="required">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-2">
 						<label for="txtEstado">Estado:</label>
-						<input type="text" class="form-control" id="txtEstado" name="txtEstado" required="required">
+						<input type="text" class="form-control" id="uf" name="txtEstado" required="required">
 					</div>
 					<div class="form-group col-xs-6">
 						<label for="txtEmail">E-mail:</label>
@@ -61,15 +61,21 @@
 					</div>
 					<div class="form-group col-xs-4">
 						<label for="txtTelefone">Telefone:</label>
-						<input type="text" class="form-control" id="txtTelefone" maxlength="18" name="txtTelefone" required="required">
+						<input type="text" class="form-control" id="telefone" maxlength="18" name="txtTelefone" onKeyPress="jQuery();" required="required">
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-xs-3">
+					<div class="form-group col-xs-6">
 						<label for="txtDepto">Departamento:</label>
 						<input type="text" class="form-control" id="txtDepto" name="txtDepto" required="required">
 					</div>
-					<div class="form-group col-xs-4">
+					<div class="form-group col-xs-6">
+						<label for="txtCPF">CPF:</label>
+						<input type="text" class="form-control" id="cpf" name="txtCPF" maxlength="11" onKeyPress="jQuery();" required="required">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-5">
 						<label for="txtTag">Tag:</label> 
 						<input type="number" step="0" class="form-control" id="txtTag" name="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
 					</div>
@@ -81,10 +87,10 @@
 							<option value="administrador">Tag/Cartão</option>
 							<option value="administrador" selected>Cliente</option>
 						</select>
-					</div>
+					</div>				
 				</div>
 				<div class="row">
-					<div class="form-group col-xs-5">
+					<div class="form-group col-xs-6">
 						<label for="txtFoto">Foto:</label>
 						<input type="file" class="form-control" id="txtFoto" name="txtFoto">
 					</div>

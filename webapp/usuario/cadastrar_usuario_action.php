@@ -16,6 +16,7 @@ $cidadeUsuario = $_POST['txtCidade'];
 $estadoUsuario = $_POST['txtEstado'];
 $emailUsuario = $_POST['txtEmail'];
 $telefoneUsuario = $_POST['txtTelefone'];
+$cpfUsuario = $_POST['txtCPF'];
 $deptoUsuario = $_POST['txtDepto'];
 $fotoUsuario = $_POST['txtFoto'];
 
@@ -30,13 +31,14 @@ $cidadeUsuario = mysqli_real_escape_string($link, $cidadeUsuario);
 $estadoUsuario = mysqli_real_escape_string($link, $estadoUsuario);
 $emailUsuario = mysqli_real_escape_string($link, $emailUsuario);
 $telefoneUsuario = mysqli_real_escape_string($link, $telefoneUsuario);
+$cpfUsuario = mysqli_real_escape_string($link, $cpfUsuario);
 $deptoUsuario = mysqli_real_escape_string($link, $deptoUsuario);
 $fotoUsuario = mysqli_real_escape_string($link, $fotoUsuario);
 
 // montagem da query
 $query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, email, foto) 
 VALUES (".$matriculaUsuario.", '".$nomeUsuario."', '".$deptoUsuario."', '".$ruaUsuario."', ".$numeroUsuario.", '".$bairroUsuario."', 
-'".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$emailUsuario."', '".$fotoUsuario."')";
+'".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$cpfUsuario."', '".$emailUsuario."', '".$fotoUsuario."')";
 
 // Executa a query
 $inserir = mysqli_query($link, $query);
