@@ -20,7 +20,7 @@
 		<div class="col-xs-10 text-center">
 			<div class="login">
 				<h1>Login</h1>
-				<form method="post" action="index.html"> <!- Arrumar esta parte ->
+				<form method="post" action="index.html"> <!-- Arrumar esta parte -->
 					<p><input type="text" name="login" value="" placeholder="Número da tag" maxlength=9></p>
 					<p><input type="password" name="password" value="" placeholder="senha"></p>
 					<p class="submit"><input type="submit" name="commit" value="Login"></p>
