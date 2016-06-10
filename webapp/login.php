@@ -8,7 +8,7 @@
 	<div class="container">
 		<div class="page-header">
 			<div class="row">
-				<div class="col-xs-10 text-center">
+				<div class="col-xs-12 text-center">
 					<h1>Sistema de Controle de Acesso</h1>
 				</div>
 			</div>
@@ -17,17 +17,41 @@
 	</div>
 	
 	<div class="container">
-		<div class="col-xs-10 text-center">
-			<div class="login">
-				<h1>Login</h1>
-				<form method="post" action="index.html"> <!-- Arrumar esta parte -->
-					<p><input type="text" name="login" value="" placeholder="Número da tag" maxlength=9></p>
-					<p><input type="password" name="password" value="" placeholder="senha"></p>
-					<p class="submit"><input type="submit" name="commit" value="Login"></p>
-				</form>
-			</div>
+		<div class="col-xs-4">
 		</div>
-			
+		<div class="col-xs-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Login</h3>
+				</div>
+				<div class="panel-body">
+					<form method="post" action="login_action.php">
+						<div class="row">
+							<div class="form-group col-xs-12">
+								<label for="txtUsuario">Usuário:</label>
+								<input type="text" id="txtUsuario" name="txtUsuario" 
+									class="form-control" required="required" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-xs-12">
+								<label for="txtSenha">Senha:</label>
+								<input type="password" id="txtSenha" name="txtSenha" 
+									class="form-control" required="required" />
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group col-xs-12">
+								<button type="submit" class="btn btn-default">
+									Login
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>	
 		<div class="clearfix"></div>
 	</div>
 
