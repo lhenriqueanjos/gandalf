@@ -36,7 +36,7 @@ $deptoUsuario = mysqli_real_escape_string($link, $deptoUsuario);
 $fotoUsuario = mysqli_real_escape_string($link, $fotoUsuario);
 
 // montagem da query
-$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, email, foto) 
+$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto)
 VALUES (".$matriculaUsuario.", '".$nomeUsuario."', '".$deptoUsuario."', '".$ruaUsuario."', ".$numeroUsuario.", '".$bairroUsuario."', 
 '".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$cpfUsuario."', '".$emailUsuario."', '".$fotoUsuario."')";
 
