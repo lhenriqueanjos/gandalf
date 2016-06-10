@@ -12,21 +12,13 @@
 					</ol>
 				</div>
 			</div>
-			
-			<p>
-				Clique em Salas. 
-				É possível ver como vai ficar a tela. Ao clicar em incluir, dá pra ver a tela de cadastro. O botão cancelar funciona.
-				Está tudo em páginas estáticas, por enquanto.
-			</p>
-			
-			<div class="row">
-				<div class="col-xs-10">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Últimos 5 acessos</h3>
+				</div>
+				<div class="panel-body">
 					<table class="table table-bordered table-hover">
-						<thead>
-							<tr>
-								<th colspan=2>Últimos 5 acessos</td>
-							</tr>
-						</thead>
 						<thead>
 							<th>Acesso</th>
 							<th>Local</th>
@@ -37,7 +29,6 @@
 					</table>
 				</div>
 			</div>
-			
 		</div>
   
 <?php  
