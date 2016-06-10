@@ -20,7 +20,7 @@
 
 			<div class="row">
 				<div class="col-xs-12">
-					<table class="table table-bordered table-hover">
+					<table class="table table-bordered table-hover table-striped">
 						<thead>
 							<tr>
 								<th colspan=4>Permissoes de acesso</td>

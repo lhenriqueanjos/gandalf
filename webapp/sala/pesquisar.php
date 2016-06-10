@@ -91,7 +91,7 @@
 							// se o usuário tiver feito a pesquisa, exibe a tabela
 							if(isset($_POST) and $total > 0) {
 						?>
-						<table class="table table-bordered table-hover">
+						<table class="table table-bordered table-hover table-striped">
 							<thead>
 								<th style="width: 30px;" />
 								<th>Nome</th>

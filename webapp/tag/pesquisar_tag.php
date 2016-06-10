@@ -90,7 +90,7 @@
 			
 			<div class="row">
 				<div class="col-xs-10">
-					<table class="table table-bordered table-hover">
+					<table class="table table-bordered table-hover table-striped">
 						<thead>
 							<tr>
 								<th colspan=2>Últimos 5 acessos</td>
