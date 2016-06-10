@@ -52,7 +52,7 @@ require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 			<div class="row">
 				<div class="col-xs-12">
 					<div class="alert alert-success" role="alert">
-						Sala incluída com sucesso.
+						<span class="glyphicon glyphicon-ok"></span> Sala incluída com sucesso.
 					</div>
 				</div>
 			</div>
