@@ -12,7 +12,6 @@
 					</ol>
 				</div>
 			</div>
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Últimos 5 acessos</h3>
