@@ -105,6 +105,20 @@ function valida_cpf( valor ) {
     // Remove caracteres inválidos do valor
     valor = valor.replace(/[^0-9]/g, '');
 
+	// Considera falso os CPFs abaixo, que a função naturalmente não consideraria
+	if (valor === '11111111111' || 
+		valor === '22222222222' ||
+		valor === '33333333333' ||
+		valor === '44444444444' ||
+		valor === '55555555555' ||
+		valor === '66666666666' ||
+		valor === '77777777777' ||
+		valor === '88888888888' ||
+		valor === '99999999999' ||
+		valor === '00000000000'){
+		return false;
+		
+	}
 
     // Captura os 9 primeiros dígitos do CPF
     // Ex.: 02546288423 = 025462884

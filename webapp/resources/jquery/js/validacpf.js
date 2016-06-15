@@ -12,7 +12,7 @@ $(function(){
         if ( valida_cpf_cnpj( cpf_cnpj ) ) {
             // alert('OK');
         } else {
-            alert('CPF ou CNPJ inválido!');
+            alert('CPF inválido!');
         }
         
     });
