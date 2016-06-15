@@ -55,6 +55,7 @@ CREATE TABLE `usuario` (
   `cpf` varchar(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `foto` varbinary(100) DEFAULT NULL,
+  `senha` varbinary(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_categoria_usuario` (`id_categoria`),
   CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION

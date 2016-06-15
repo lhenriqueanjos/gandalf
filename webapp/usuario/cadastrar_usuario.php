@@ -23,37 +23,37 @@
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtMatricula">Matrícula:</label>
-						<input type="number" step="0" class="form-control" id="txtMatricula" name="txtMatricula" required="required">
+						<input type="number" step="0" class="form-control" id="txtMatricula" name="txtMatricula">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtCEP">CEP:</label>
-						<input type="text" class="form-control" id="cep" value="" name="txtCEP" maxlength="9" onblur="pesquisacep(this.value);" onKeyPress="jQuery();" required="required">
+						<input type="text" class="form-control" id="cep" value="" name="txtCEP" maxlength="9" onblur="pesquisacep(this.value);" onKeyPress="jQuery();">
 					</div>
 					<div class="form-group col-xs-9">
 						<label for="txtRua">Rua:</label>
-						<input type="text" class="form-control" id="rua" name="txtRua" required="required">
+						<input type="text" class="form-control" id="rua" name="txtRua">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtNumero">Número:</label>
-						<input type="text" class="form-control" id="txtNumero" name="txtNumero" required="required">
+						<input type="text" class="form-control" id="txtNumero" name="txtNumero">
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtBairro">Bairro:</label>
-						<input type="text" class="form-control" id="bairro" name="txtBairro" required="required">
+						<input type="text" class="form-control" id="bairro" name="txtBairro">
 					</div>
 					<div class="form-group col-xs-4">
 						<label for="txtCidade">Cidade:</label>
-						<input type="text" class="form-control" id="cidade" name="txtCidade" required="required">
+						<input type="text" class="form-control" id="cidade" name="txtCidade">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-2">
 						<label for="txtEstado">Estado:</label>
-						<input type="text" class="form-control" id="uf" name="txtEstado" required="required">
+						<input type="text" class="form-control" id="uf" name="txtEstado">
 					</div>
 					<div class="form-group col-xs-6">
 						<label for="txtEmail">E-mail:</label>
@@ -67,7 +67,7 @@
 				<div class="row">
 					<div class="form-group col-xs-6">
 						<label for="txtDepto">Departamento:</label>
-						<input type="text" class="form-control" id="txtDepto" name="txtDepto" required="required">
+						<input type="text" class="form-control" id="txtDepto" name="txtDepto">
 					</div>
 					<div class="form-group col-xs-6">
 						<label for="txtCPF">CPF:</label>
@@ -88,6 +88,12 @@
 							<option value="administrador" selected>Cliente</option>
 						</select>
 					</div>				
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-6">
+						<label for="txtDepto">Senha:</label>
+						<input type="password" class="form-control" id="txtSenha" name="txtSenha" required="required">
+					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-xs-6">

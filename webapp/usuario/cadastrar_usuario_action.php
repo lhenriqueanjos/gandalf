@@ -19,6 +19,7 @@ $telefoneUsuario = $_POST['txtTelefone'];
 $cpfUsuario = $_POST['txtCPF'];
 $deptoUsuario = $_POST['txtDepto'];
 $fotoUsuario = $_POST['txtFoto'];
+$senhaUsuario = $_POST['txtSenha'];
 
 // evitar sql inject
 $nomeUsuario = mysqli_real_escape_string($link, $nomeUsuario);
@@ -34,11 +35,12 @@ $telefoneUsuario = mysqli_real_escape_string($link, $telefoneUsuario);
 $cpfUsuario = mysqli_real_escape_string($link, $cpfUsuario);
 $deptoUsuario = mysqli_real_escape_string($link, $deptoUsuario);
 $fotoUsuario = mysqli_real_escape_string($link, $fotoUsuario);
+$senhaUsuario = mysqli_real_escape_string($link, $senhaUsuario);
 
 // montagem da query
-$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto)
+$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha)
 VALUES (".$matriculaUsuario.", '".$nomeUsuario."', '".$deptoUsuario."', '".$ruaUsuario."', ".$numeroUsuario.", '".$bairroUsuario."', 
-'".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$cpfUsuario."', '".$emailUsuario."', '".$fotoUsuario."')";
+'".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$cpfUsuario."', '".$emailUsuario."', '".$fotoUsuario."', MD5('".$senhaUsuario."'))";
 
 // Executa a query
 $inserir = mysqli_query($link, $query);
