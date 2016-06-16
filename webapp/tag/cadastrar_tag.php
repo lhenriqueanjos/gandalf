@@ -68,7 +68,7 @@
 				</div>
 			</form>
 			
-			<form action="#" method="POST">
+			<form action="editar_tag.php" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
@@ -90,10 +90,10 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<button type="submit" class="btn btn-default" formaction="editar_tag.php">
+						<button type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 						</button>
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-default" formaction="excluir_tag.php">
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
 						</button>
 					</div>
