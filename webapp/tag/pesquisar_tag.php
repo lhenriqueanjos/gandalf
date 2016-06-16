@@ -16,6 +16,7 @@
 	
 	$var1 = " ";
 	$var2 = " ";
+	$var3 = 2; // TODO -> Substituir esse numero "2" pelo ID do usuario que esta logado
 	
 	// verifica se já clicou no pesquisar e consulta o banco de acordo com o select do usuário
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -23,7 +24,7 @@
 		$opt = $_POST['opt'];
 		
 		// TODO incluir no filtro desse SQL a data fim da permissao = a NULL, para nao captar usuario inativo
-		$sqlForm = "SELECT usuario.nome, categoria_usuario.tipo 
+		$sqlForm = "SELECT usuario.nome, categoria_usuario.tipo, usuario.id 
 					FROM rel_usuario_tag
 					JOIN usuario
 					ON rel_usuario_tag.id_usuario = usuario.id
@@ -35,6 +36,8 @@
 		
 		$var1 = $rowForm['nome'];
 		$var2 = $rowForm['tipo'];
+		$var3 = $rowForm['id'];
+
 	}
 ?>
 		<div class="col-xs-10">
