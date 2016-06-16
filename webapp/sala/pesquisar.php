@@ -105,7 +105,7 @@
 							 ?>
 								<tr>
 									<td>
-										<input type="checkbox" name="<?=$linha['id']?>" />
+										<input type="checkbox" name="listaSalas" value="<?=$linha['id']?>" />
 									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['numero']?></td> 
@@ -151,7 +151,7 @@
 							if(isset($_POST) and $total > 0) {
 						?>
 							<!-- Botões exibidos apenas se tiver registros na tabela -->
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-default" formaction="editar_sala.php">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
 							<button type="submit" class="btn btn-default">
