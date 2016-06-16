@@ -22,9 +22,9 @@ $descricaoSala = mysqli_real_escape_string($link, $descricaoSala);
 
 // montagem da query
 $query = "UPDATE sala 
-		SET nome = $nomeSala, 
-			numero = $numeroSala,
-			descricao = $descricaoSala
+		SET numero = $numeroSala, 
+			nome = '$nomeSala',
+			descricao = '$descricaoSala'
 		WHERE id = $auxiliar";
 
 // Executa a query
