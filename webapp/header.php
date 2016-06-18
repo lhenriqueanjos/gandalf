@@ -11,6 +11,7 @@
 	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/jquery/js/validacpf.js" type="text/javascript"></script>
 	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/jquery/js/confere_checkbox.js" type="text/javascript"></script>
 	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/jquery/js/confere_checkbox_exclusao.js" type="text/javascript"></script>
+	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/jquery/js/confere_select_tag.js" type="text/javascript"></script>
 </head>
 <body>
 

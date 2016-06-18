@@ -49,12 +49,12 @@
 				</div>
 			</div>
 
-			<form action="#" method="POST">
+			<form action="#" method="POST" id="selTAGform" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG" name="opt">
-							<option selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
+							<option value="" selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
 							<?php
 								do {
 							?>
@@ -71,7 +71,7 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-default"  onclick="valida()">
 							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Selecionar
 						</button>
 					</div>
