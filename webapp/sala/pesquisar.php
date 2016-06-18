@@ -154,7 +154,7 @@
 							<button type="submit" class="btn btn-default" formaction="editar_sala.php" onclick="testaCheck()">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
-							<button type="submit" class="btn btn-default" formaction="excluir_sala.php">
+							<button type="submit" class="btn btn-default" formaction="excluir_sala.php" onclick="testaCheckExc()">
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
 							</button>
 						<?php 
