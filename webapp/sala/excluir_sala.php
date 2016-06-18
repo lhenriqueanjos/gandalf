@@ -7,10 +7,9 @@ require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 // abre a conexão
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
-// var_dump($_POST);
-
-// variáveis para insert
-$idSala = $_POST['listaSalas'];
+// for que irá capturar o array de salas e excluir uma a uma
+$arr = $_POST['listaSalas'];
+foreach ($arr as $idSala) {
 
 // evitar sql inject
 $idSala = mysqli_real_escape_string($link, $idSala);
@@ -18,9 +17,11 @@ $idSala = mysqli_real_escape_string($link, $idSala);
 // montagem da query
 $query = "DELETE FROM sala 
 		WHERE id = $idSala";
-
+		
 // Executa a query
 $inserir = mysqli_query($link, $query);
+
+}
 
 if (!$inserir) {
 	// TODO redirecionar para uma sala de erro padronizada
