@@ -71,7 +71,7 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<button type="submit" class="btn btn-default"  onclick="valida()">
+						<button type="submit" class="btn btn-default" onclick="valida()">
 							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Selecionar
 						</button>
 					</div>

@@ -32,16 +32,16 @@
 				</div>
 			</div>
 		
-			<form method="POST" action="cadastrar_tag_action.php">
+			<form method="POST" id="preencheChave" action="cadastrar_tag_action.php" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtChave">Chave:</label>
-						<input type="number" class="form-control" id="txtChave" name="numTag" required>
+						<input type="number" class="form-control" id="txtChave" name="numTag">
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtTipo">Tipo:</label>
 						<br>
-						<select class="form-control" id="selTAG" name="optTipoTag">
+						<select class="form-control" id="selTAGtipo" name="optTipoTag">
 							<?php
 								do {
 							?>
@@ -58,7 +58,7 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-default" onclick="valida_form(this)">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir
 						</button>
 						<button type="submit" class="btn btn-default" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/tag/cadastrar_tag.php">
@@ -68,12 +68,12 @@
 				</div>
 			</form>
 			
-			<form action="editar_tag.php" method="POST">
+			<form action="editar_tag.php" id="selTAGform" method="POST" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG" name="optChave">
-							<option selected>selecione </option>
+							<option value="" selected>selecione </option>
 							<?php
 								do {
 							?>
@@ -90,10 +90,10 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-default" onclick="valida()">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 						</button>
-						<button type="submit" class="btn btn-default" formaction="excluir_tag.php">
+						<button type="submit" class="btn btn-default" onclick="valida()" formaction="excluir_tag.php">
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
 						</button>
 					</div>
