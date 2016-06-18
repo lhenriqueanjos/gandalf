@@ -57,7 +57,7 @@
 				</div>
 			</div>
 		
-			<form action="#" method="POST">
+			<form action="#" method="POST" id="formDados" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtNome">Nome:</label>
@@ -105,7 +105,7 @@
 							 ?>
 								<tr>
 									<td>
-										<input type="checkbox" name="listaSalas" value="<?=$linha['id']?>" />
+										<input type="checkbox" name="listaSalas[]" value="<?=$linha['id']?>" />
 									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['numero']?></td> 
@@ -151,7 +151,7 @@
 							if(isset($_POST) and $total > 0) {
 						?>
 							<!-- Botões exibidos apenas se tiver registros na tabela -->
-							<button type="submit" class="btn btn-default" formaction="editar_sala.php">
+							<button type="submit" class="btn btn-default" formaction="editar_sala.php" onclick="testaCheck()">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
 							<button type="submit" class="btn btn-default" formaction="excluir_sala.php">

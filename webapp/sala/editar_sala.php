@@ -6,18 +6,28 @@
 	// abre a conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 	
-	$auxiliar = $_POST['listaSalas'];
-	
+	//var_dump($_POST);
+
 	// query para carregar a chave no input desabilitado
-	$sql = "SELECT numero, nome, descricao FROM sala WHERE id = $auxiliar";
-	$result = mysqli_query($link, $sql);
+		$arr = $_POST['listaSalas'];
+		foreach ($arr as $auxiliar) {
 
-	$total = mysqli_num_rows($result);
-    
-    $row = mysqli_fetch_assoc($result); 
+		// evitar sql inject
+		$auxiliar = mysqli_real_escape_string($link, $auxiliar);
+
+		// montagem da query
+		$query = "SELECT numero, nome, descricao 
+				FROM sala 
+				WHERE id = $auxiliar";
+				
+		// Executa a query
+		$result = mysqli_query($link, $query);
+
+		$total = mysqli_num_rows($result);
+			
+		$row = mysqli_fetch_assoc($result); 
+		}
 	
-	//$auxiliar2 = $row['codigo'];
-
 ?>
 		<div class="col-xs-10">
 			<div class="row">

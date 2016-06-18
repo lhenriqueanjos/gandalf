@@ -1,0 +1,34 @@
+function testaCheck(){	
+
+//declaração de vars. A var checados irá contar quantos estão checados.	
+var inputs,i,retorno_,checados=0;	
+
+//pegando os inputs e jogando num array	
+inputs = document.getElementsByTagName("input");	
+
+//div que vai exibir o retorno da funçao	
+retorno_ = document.getElementById("retorno")		
+
+//varrendo o array que tem os inputs	
+for(i=0;i<inputs.length;i++){
+	if(inputs[i].type=="checkbox"){ 
+	//se os inputs forem checkbox	
+		if(inputs[i].checked==true){				
+			checados++;			
+		}		
+	}	
+}	
+
+//escrevendo o resultado	
+if (checados > 1 || checados == 0){
+
+	alert("Você só pode editar uma sala por vez!");	
+	var mudar = document.getElementById('formDados');
+	mudar.setAttribute('onsubmit', 'return false');
+
+}else{
+	var mudar = document.getElementById('formDados');
+	mudar.setAttribute('onsubmit', 'return true');
+}
+
+}
