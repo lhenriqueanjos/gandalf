@@ -36,7 +36,7 @@
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtChave">Chave:</label>
-						<input type="number" class="form-control" id="txtChave" name="numTag">
+						<input type="number" class="form-control" id="txtChave" name="numTag" required>
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtTipo">Tipo:</label>
