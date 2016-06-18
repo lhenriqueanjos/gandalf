@@ -6,9 +6,6 @@ var inputs,i,retorno_,checados=0;
 //pegando os inputs e jogando num array	
 inputs = document.getElementsByTagName("input");	
 
-//div que vai exibir o retorno da funçao	
-retorno_ = document.getElementById("retorno")		
-
 //varrendo o array que tem os inputs	
 for(i=0;i<inputs.length;i++){
 	if(inputs[i].type=="checkbox"){ 
@@ -20,15 +17,23 @@ for(i=0;i<inputs.length;i++){
 }	
 
 //escrevendo o resultado	
-if (checados > 1 || checados == 0){
+if (checados == 0){
 
-	alert("Você só pode editar uma sala por vez!");	
+	alert("Você não selecionou nenhum registro!");	
 	var mudar = document.getElementById('formDados');
 	mudar.setAttribute('onsubmit', 'return false');
 
 }else{
+	if (checados > 1){
+
+	alert("Você só pode editar uma sala por vez!");	
+	var mudar = document.getElementById('formDados');
+	mudar.setAttribute('onsubmit', 'return false');
+	
+}else{
 	var mudar = document.getElementById('formDados');
 	mudar.setAttribute('onsubmit', 'return true');
+}
 }
 
 }
