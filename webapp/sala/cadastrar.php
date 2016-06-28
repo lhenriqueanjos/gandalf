@@ -36,7 +36,7 @@
 						<button type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
 						</button>
-						<button type="submit" class="btn btn-default" formaction="pesquisar.php">
+						<button type="submit" class="btn btn-default" formaction="pesquisar.php" formnovalidate>
 							<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Cancelar
 						</button>
 					</div>
