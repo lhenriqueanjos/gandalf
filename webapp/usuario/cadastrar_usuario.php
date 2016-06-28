@@ -15,7 +15,7 @@
 				</div>
 			</div>
 		
-			<form action="cadastrar_usuario_action.php" method="POST">
+			<form action="cadastrar_usuario_action.php" enctype="multipart/form-data" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-9">
 						<label for="txtNome">Nome:</label>
