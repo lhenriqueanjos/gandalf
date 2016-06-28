@@ -59,13 +59,14 @@
 						</div>
 
 						<div class="row">
-							<div class="form-group col-xs-12">
+							<div class="form-group col-xs-12 text-right">
 								<button type="submit" class="btn btn-default">
 									Login
 								</button>
 							</div>
 						</div>
 					</form>
+
 					<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/cadastrar_usuario.php">Novo usuário? Solicite seu cadastro aqui.</a></h5>
 				</div>
 			</div>

@@ -1,3 +1,11 @@
+<?php  
+session_start();
+if((!isset ($_SESSION['login']) == true)) {
+	header('location:/gandalf/webapp/login/login.php');
+}
+
+$logado = $_SESSION['login'];
+?>
 <html>
 <head>
 	<title>Sistema de Controle de Acesso</title>
@@ -27,7 +35,7 @@
 						<h5>Bem-vindo, Usuário!</h5>
 					</div>
 					<div class="row text-left">
-						<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login/login.php">Sair</a></h5>
+						<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login/logout.php">Sair</a></h5>
 					</div>
 				</div>
 			</div>
