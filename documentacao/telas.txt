@@ -5,7 +5,7 @@ telas:
 		campos usuário e senha
 		o nome de usuário para cliente ou administrador pode ser o e-mail. para tag, pode ser o número da TAG
 		caso o usuário seja cliente ou administrador, redirecionar para a página inicial
-		caso o usuário seja cliente ou administrador, redirecionar para a página de histórico de acessos, mostrando apenas os acessos daquela TAG
+		caso o usuário seja TAG, redirecionar para a página de histórico de acessos, mostrando apenas os acessos daquela TAG
 	Pesquisar, Remover e Alterar Usuários
 		usuário do perfil ADMINISTRADOR:
 			acessa a opção de menu Usuários e vai para a tela de pesquisa. ao pesquisar, ele pode selecionar usuários para alteração ou remoção
@@ -19,7 +19,7 @@ telas:
 			acessa essa tela pelo botão Incluir Usuário na tela de pesquisa
 		a tela tem os campos da tabela Usuario. o combo PERFIL vem com as opções ADMINISTRADOR e CLIENTE. Caso o usuário seja CLIENTE, vem com a opção CLIENTE selecionada e desabilitado.
 	Cadastro de TAG (pesquisar, incluir, excluir, remover)
-		tela de cadastro com apenas 1 campo (número da TAG)
+		tela de cadastro com campos: número da TAG e senha
 		ao acessar o menu, o usuário vai para a tela de pesquisa. ao pesquisar, ele pode selecionar tags para alteração ou remoção
 		colocar botão incluir (redireciona para a tela de inclusão)
 		acessível para usuários do perfil ADMINISTRADOR
@@ -36,6 +36,7 @@ telas:
 		acessível para usuários do perfil ADMINISTRADOR
 	Cadastro de Salas
 		pesquisar, incluir, alterar e remover
+		acessível para usuários do perfil ADMINISTRADOR
 
 	Opções do Menu
 		Usuário
