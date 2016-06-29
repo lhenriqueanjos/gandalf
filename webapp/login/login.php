@@ -23,8 +23,10 @@
 		<div class="col-xs-3">
 
 			<?php 
-				$naoEncontrado = $_GET['naoEncontrado'];
-				if (isset($naoEncontrado)) {
+				// verifica se já tentou fazer login
+				if($_SERVER['REQUEST_METHOD'] == 'GET') {
+					$naoEncontrado = $_GET['naoEncontrado'];
+					if (isset($naoEncontrado)) {
 			?>
 			<div class="row">
 				<div class="col-xs-12">
@@ -34,6 +36,7 @@
 				</div>
 			</div>
 			<?php
+					}
 				}
 			?>
 
