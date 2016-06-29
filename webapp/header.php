@@ -5,6 +5,7 @@
 	}
 
 	$logado = $_SESSION['nomeUsuario'];
+	$categoria = $_SESSION['categoria'];
 ?>
 <html>
 <head>

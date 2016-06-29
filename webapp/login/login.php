@@ -45,7 +45,7 @@
 					<form method="post" action="login_action.php">
 						<div class="row">
 							<div class="form-group col-xs-12">
-								<label for="txtUsuario">Usuário:</label>
+								<label for="txtUsuario">E-mail/TAG:</label>
 								<input type="text" id="txtUsuario" name="txtUsuario" 
 									class="form-control" required="required" />
 							</div>
