@@ -1,57 +1,5 @@
 <?php
 
-// abre a conexão
-require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
-
-// var_dump($_POST);
-
-// variáveis para insert
-$nomeUsuario = $_POST['txtNome'];
-$matriculaUsuario = $_POST['txtMatricula'];
-$ruaUsuario = $_POST['txtRua'];
-$numeroUsuario = $_POST['txtNumero'];
-$bairroUsuario = $_POST['txtBairro'];
-$cepUsuario = $_POST['txtCEP'];
-$cidadeUsuario = $_POST['txtCidade'];
-$estadoUsuario = $_POST['txtEstado'];
-$emailUsuario = $_POST['txtEmail'];
-$telefoneUsuario = $_POST['txtTelefone'];
-$cpfUsuario = $_POST['txtCPF'];
-$deptoUsuario = $_POST['txtDepto'];
-$fotoUsuario = $_POST['txtFoto'];
-$senhaUsuario = $_POST['txtSenha'];
-
-// evitar sql inject
-$nomeUsuario = mysqli_real_escape_string($link, $nomeUsuario);
-$matriculaUsuario = mysqli_real_escape_string($link, $matriculaUsuario);
-$ruaUsuario = mysqli_real_escape_string($link, $ruaUsuario);
-$numeroUsuario = mysqli_real_escape_string($link, $numeroUsuario);
-$bairroUsuario = mysqli_real_escape_string($link, $bairroUsuario);
-$cepUsuario = mysqli_real_escape_string($link, $cepUsuario);
-$cidadeUsuario = mysqli_real_escape_string($link, $cidadeUsuario);
-$estadoUsuario = mysqli_real_escape_string($link, $estadoUsuario);
-$emailUsuario = mysqli_real_escape_string($link, $emailUsuario);
-$telefoneUsuario = mysqli_real_escape_string($link, $telefoneUsuario);
-$cpfUsuario = mysqli_real_escape_string($link, $cpfUsuario);
-$deptoUsuario = mysqli_real_escape_string($link, $deptoUsuario);
-$fotoUsuario = mysqli_real_escape_string($link, $fotoUsuario);
-$senhaUsuario = mysqli_real_escape_string($link, $senhaUsuario);
-
-// montagem da query
-$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha)
-VALUES (".$matriculaUsuario.", '".$nomeUsuario."', '".$deptoUsuario."', '".$ruaUsuario."', ".$numeroUsuario.", '".$bairroUsuario."', 
-'".$cepUsuario."', '".$cidadeUsuario."', '".$estadoUsuario."', '".$telefoneUsuario."', '".$cpfUsuario."', '".$emailUsuario."', '".$fotoUsuario."', MD5('".$senhaUsuario."'))";
-
-// Executa a query
-$inserir = mysqli_query($link, $query);
-
-if (!$inserir) {
-	// TODO redirecionar para uma sala de erro padronizada
-	echo "Não foi possível inserir o usuário, tente novamente.";
-	// Exibe dados sobre o erro:
-	echo "Dados sobre o erro:" . mysqli_error($link);
-}
-
 $current_page = "usuario";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
