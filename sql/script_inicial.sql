@@ -15,13 +15,12 @@ CREATE TABLE `categoria_tag` (
 CREATE TABLE `tag` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_categoria` int(4) DEFAULT NULL,
-  `codigo` int(11) DEFAULT NULL,
+  `codigo` varchar(11) DEFAULT NULL,
   `senha` varbinary(100) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tag_categoria_tag` (`id_categoria`),
   CONSTRAINT `fk_tag_categoria_tag` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 CREATE TABLE `acesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
