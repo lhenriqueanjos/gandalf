@@ -18,11 +18,11 @@ telas:
 		usuário do perfil ADMINISTRADOR:
 			acessa essa tela pelo botão Incluir Usuário na tela de pesquisa
 		a tela tem os campos da tabela Usuario. o combo PERFIL vem com as opções ADMINISTRADOR e CLIENTE. Caso o usuário seja CLIENTE, vem com a opção CLIENTE selecionada e desabilitado.
-	Cadastro de TAG (pesquisar, incluir, excluir, remover)
+	Cadastro de TAG (pesquisar, incluir, alterar, remover)
 		tela de cadastro com campos: número da TAG e senha
 		ao acessar o menu, o usuário vai para a tela de pesquisa. ao pesquisar, ele pode selecionar tags para alteração ou remoção
 		colocar botão incluir (redireciona para a tela de inclusão)
-		acessível para usuários do perfil ADMINISTRADOR
+		acessível para usuários do perfil ADMINISTRADOR ou TAG MASTER
 		ao remover, fazer exclusão lógica e salvar o motivo
 	Associar TAG
 		ao acessar o menu, o usuário vai para a tela de pesquisa. ele pesquisa o usuário por nome, e-mail, etc, seleciona o usuário e clica em Associar. O sistema redireciona para a tela de Associar TAG, que exibe informações do usuario e uma lista de TAGs que estejam sem vínculo
