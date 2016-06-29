@@ -122,9 +122,10 @@ CREATE TABLE IF NOT EXISTS `cidade` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5565 ;
 
 INSERT INTO `sala`(numero,nome,descricao) VALUES (101,"Laboratório 1","laboratório de informática para pesquisas");
-INSERT INTO `categoria_tag` (tipo) VALUES ("Administrador");
-INSERT INTO `categoria_tag` (tipo) VALUES ("Cliente");
-INSERT INTO `categoria_tag` (tipo) VALUES ("TAG/Cartão");
+
+INSERT INTO `categoria_tag` (tipo) VALUES ("Comum");
+INSERT INTO `categoria_tag` (tipo) VALUES ("Master");
+
 INSERT INTO `categoria_usuario` (tipo) VALUES ("Administrador");
 INSERT INTO `categoria_usuario` (tipo) VALUES ("Usuário");
 
