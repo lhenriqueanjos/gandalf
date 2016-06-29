@@ -1,10 +1,10 @@
 <?php  
-session_start();
-if((!isset ($_SESSION['login']) == true)) {
-	header('location:/gandalf/webapp/login/login.php');
-}
+	session_start();
+	if((!isset ($_SESSION['login']) == true)) {
+		header('location:/gandalf/webapp/login/login.php');
+	}
 
-$logado = $_SESSION['login'];
+	$logado = $_SESSION['nomeUsuario'];
 ?>
 <html>
 <head>
@@ -27,16 +27,12 @@ $logado = $_SESSION['login'];
 	<div class="container">
 		<div class="page-header">
 			<div class="row">
-				<div class="col-xs-10 text-left">
+				<div class="col-xs-8 text-left">
 					<h1 >Sistema de Controle de Acesso</h1>
 				</div>
-				<div class="col-xs-2 text-right">
-					<div class="row text-left">
-						<h5>Bem-vindo, Usuário!</h5>
-					</div>
-					<div class="row text-left">
-						<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login/logout.php">Sair</a></h5>
-					</div>
+				<div class="col-xs-4 text-right">
+					<h5>Bem-vindo, <?=$logado?>!</h5>
+					<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login/logout.php">Sair</a></h5>
 				</div>
 			</div>
 		</div>

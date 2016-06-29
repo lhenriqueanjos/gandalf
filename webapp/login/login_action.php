@@ -11,21 +11,22 @@ require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 $login = mysqli_real_escape_string($link, $login);
 $senha = mysqli_real_escape_string($link, $senha);
 
-$query = "SELECT * FROM usuario WHERE email = '".$login."' AND senha = MD5('".$senha."')";
-echo($query);
-// A vriavel $result pega as varias $login e $senha, faz uma pesquisa na tabela de usuarios
-$result = mysqli_query($link, $query);
+$query = "SELECT nome FROM usuario WHERE email = '".$login."' AND senha = MD5('".$senha."')";
 
-/* Logo abaixo temos um bloco com if e else, verificando se a variável $result foi bem sucedida, 
-ou seja se ela estiver encontrado algum registro idêntico o seu valor será igual a 1, se não, 
-se não tiver registros seu valor será 0. Dependendo do resultado ele redirecionará para a pagina site.php 
-ou retornara  para a pagina do formulário inicial para que se possa tentar novamente realizar o login */
-if(mysqli_num_rows($result) > 0 ) {
+$resultado = mysqli_query($link, $query) or die(mysqli_error());
+
+$linha = mysqli_fetch_assoc($resultado);
+
+if(mysqli_num_rows($resultado) > 0 ) {
 	$_SESSION['login'] = $login;
+	$_SESSION['nomeUsuario'] = $linha['nome'];
+
+	// tira o resultado da busca da memória
+	mysqli_free_result($resultado);
+
 	header('location:/gandalf/webapp/');
 } else {
 	unset($_SESSION['login']);
 	header('location:/gandalf/webapp/login/login.php?naoEncontrado=true');
 }
-
 ?>
