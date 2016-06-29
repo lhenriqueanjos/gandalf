@@ -24,7 +24,7 @@ if(mysqli_num_rows($resultado) > 0) {
 	if ($linha['id_categoria'] == 1) {
 		$_SESSION['categoria'] = "ADMINISTRADOR";
 	} else {
-		$_SESSION['categoria'] = "USUARIO";
+		$_SESSION['categoria'] = "CLIENTE";
 	}
 
 	// tira o resultado da busca da memória
@@ -45,7 +45,7 @@ if(mysqli_num_rows($resultado) > 0) {
 		$_SESSION['login'] = $login;
 		$_SESSION['nomeUsuario'] = "TAG";
 		if ($linha['id_categoria'] == 1) {
-			$_SESSION['categoria'] = "COMUM";
+			$_SESSION['categoria'] = "TAG";
 		} else {
 			$_SESSION['categoria'] = "MASTER";
 		}
