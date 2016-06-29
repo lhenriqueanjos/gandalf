@@ -127,7 +127,7 @@ INSERT INTO `categoria_tag` (tipo) VALUES ("Comum");
 INSERT INTO `categoria_tag` (tipo) VALUES ("Master");
 
 INSERT INTO `categoria_usuario` (tipo) VALUES ("Administrador");
-INSERT INTO `categoria_usuario` (tipo) VALUES ("Usuário");
+INSERT INTO `categoria_usuario` (tipo) VALUES ("Cliente");
 
 INSERT INTO `pais` (`id`, `nome`, `sigla`) VALUES (1, 'Brasil', 'BR');
 
