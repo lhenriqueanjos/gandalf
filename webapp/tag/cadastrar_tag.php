@@ -20,7 +20,56 @@
 
 	$totalTipoTag = mysqli_num_rows($resultTipoTag);
     
-    $rowTipoTag = mysqli_fetch_assoc($resultTipoTag); 
+    $rowTipoTag = mysqli_fetch_assoc($resultTipoTag);
+	
+	// executado somente após o usuario enviar o formulario
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		
+	// variáveis para insert
+	$idCategoria = $_POST['optTipoTag'];
+	$numeroTag = $_POST['numTag'];
+	$senha = $_POST['txtSenha'];
+
+	// verificar se a tag ja existe
+	$query = "SELECT codigo
+			FROM tag
+			WHERE codigo = $numeroTag";
+
+	$resultado = mysqli_query($link, $query);
+	$total = mysqli_num_rows($resultado);
+
+	$erro = false;
+	$erro_tag = false;
+	$erro_senha = false;
+
+	if ($total > 0){
+		$erro = true;
+		$erro_tag = "Código já cadastrado";
+	}else{
+		// evitar sql inject
+		$idCategoria = mysqli_real_escape_string($link, $idCategoria);
+		$numeroTag = mysqli_real_escape_string($link, $numeroTag);
+		$senha = mysqli_real_escape_string($link, $senha);
+
+		// montagem da query
+		$query = "INSERT INTO tag (id_categoria, codigo, senha) VALUES (".$idCategoria.", ".$numeroTag.", MD5('".$senha."'))";
+
+		// Executa a query
+		$inserir = mysqli_query($link, $query);
+
+		if (!$inserir) {
+			// TODO redirecionar para uma sala de erro padronizada
+			echo "Não foi possível inserir a sala, tente novamente.";
+			// Exibe dados sobre o erro:
+			echo "Dados sobre o erro:" . mysqli_error();
+		}		
+	}
+	
+	if(empty($senha)) {
+	$erro_senha = "Senha é obrigatória.";
+	$erro = true;
+	}
+}
 
 ?>
 		<div class="col-xs-10">
@@ -32,7 +81,19 @@
 				</div>
 			</div>
 		
-			<form method="POST" id="preencheChave" action="cadastrar_tag_action.php" onsubmit="return true">
+		<?php if($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+		<?php if (!$erro): ?>
+		<?php header('location:/gandalf/webapp/tag/cadastrar_tag_action.php'); ?>
+		<?php else: ?>
+		  <div class="alert alert-danger">
+			Erros no formulário: 
+			<?php if(($erro) && (!empty($erro_tag))) {echo "<br>Chave: $erro_tag";}?>
+			<?php if(($erro) && (!empty($erro_senha))) {echo "<br>Senha: $erro_senha";}?>
+		  </div>
+		<?php endif; ?>
+		<?php endif; ?>
+
+		<form method="POST" id="preencheChave" action="#" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtChave">Chave:</label>

@@ -1,33 +1,5 @@
 <?php
 
-// abre a conexão
-require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
-
-// var_dump($_POST);
-
-// variáveis para insert
-$idCategoria = $_POST['optTipoTag'];
-$numeroTag = $_POST['numTag'];
-$senha = $_POST['txtSenha'];
-
-// evitar sql inject
-$idCategoria = mysqli_real_escape_string($link, $idCategoria);
-$numeroTag = mysqli_real_escape_string($link, $numeroTag);
-$senha = mysqli_real_escape_string($link, $senha);
-
-// montagem da query
-$query = "INSERT INTO tag (id_categoria, codigo, senha) VALUES (".$idCategoria.", ".$numeroTag.", MD5('".$senha."'))";
-
-// Executa a query
-$inserir = mysqli_query($link, $query);
-
-if (!$inserir) {
-	// TODO redirecionar para uma sala de erro padronizada
-	echo "Não foi possível inserir a sala, tente novamente.";
-	// Exibe dados sobre o erro:
-	echo "Dados sobre o erro:" . mysqli_error();
-}
-
 $current_page = "tag";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
