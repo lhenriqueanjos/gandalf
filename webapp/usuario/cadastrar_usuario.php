@@ -317,11 +317,7 @@ if ((!empty($foto["name"])) && !$erro) {
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-xs-5">
-						<label for="txtTag">Tag:</label> 
-						<input type="number" step="0" class="form-control" id="txtTag" name="txtTag" disabled> <!-- Este deve ficar inativo quando não for acessado por um administrador -->
-					</div>
-					<div class="form-group col-xs-5">
+					<div class="form-group col-xs-3">
 						<label for="txtTipo">Tipo:</label>
 						<br>
 						<select name="txtTipo" class="form-control" disabled>
@@ -330,15 +326,12 @@ if ((!empty($foto["name"])) && !$erro) {
 							<option value="administrador" selected>Cliente</option>
 						</select>
 					</div>				
-				</div>
-				<div class="row">
-					<div class="form-group col-xs-6">
+				
+					<div class="form-group col-xs-4">
 						<label for="txtDepto">Senha:</label>
 						<input type="password" class="form-control" id="txtSenha" name="txtSenha" required="required">
 					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-xs-6">
+					<div class="form-group col-xs-5">
 						<label for="txtFoto">Foto:</label>
 						<input type="file" class="form-control" id="txtFoto" name="txtFoto">
 					</div>
@@ -349,7 +342,7 @@ if ((!empty($foto["name"])) && !$erro) {
 						<button type="submit" class="btn btn-default">
 							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar
 						</button>
-						<button type="submit" class="btn btn-default" formaction="pesquisar_usuario.php">
+						<button type="submit" class="btn btn-default" formaction="pesquisar_usuario.php" formnovalidate>
 							<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Cancelar
 						</button>
 					</div>
