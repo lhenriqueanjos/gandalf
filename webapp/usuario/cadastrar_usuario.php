@@ -198,8 +198,10 @@ if ((!empty($foto["name"])) && !$erro) {
 	// evitar sql inject
 	$nome = mysqli_real_escape_string($link, $nome);
 	$matricula = mysqli_real_escape_string($link, $matricula);
+	$matricula = (empty($matricula)) ? "null" : $matricula;
 	$rua = mysqli_real_escape_string($link, $rua);
 	$numero = mysqli_real_escape_string($link, $numero);
+	$numero = (empty($numero)) ? "null" : $numero;
 	$bairro = mysqli_real_escape_string($link, $bairro);
 	$cep = mysqli_real_escape_string($link, $cep);
 	$cidade = mysqli_real_escape_string($link, $cidade);
@@ -211,18 +213,16 @@ if ((!empty($foto["name"])) && !$erro) {
 	$senha = mysqli_real_escape_string($link, $senha);
 
 	// montagem da query
-	$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha)
-	VALUES (".$matricula.", '".$nome."', '".$departamento."', '".$rua."', ".$numero.", '".$bairro."', 
-	'".$cep."', '".$cidade."', '".$estado."', '".$telefone."', '".$cpf."', '".$email."', '".$nome_imagem."', MD5('".$senha."'))";
+	$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha) VALUES (".$matricula.", '".$nome."', '".$departamento."', '".$rua."', ".$numero.", '".$bairro."', '".$cep."', '".$cidade."', '".$estado."', '".$telefone."', '".$cpf."', '".$email."', '".$nome_imagem."', MD5('".$senha."'))";
 
 	// Executa a query
 	$inserir = mysqli_query($link, $query);
 
 	if (!$inserir) {
 		// TODO redirecionar para uma sala de erro padronizada
-		echo "Não foi possível inserir o usuário, tente novamente.";
+		error_log("Não foi possível inserir o usuário, tente novamente.");
 		// Exibe dados sobre o erro:
-		echo "Dados sobre o erro:" . mysqli_error($link);
+		error_log("Dados sobre o erro:" . mysqli_error($link));
 
 	  }
   }
