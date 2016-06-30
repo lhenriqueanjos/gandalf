@@ -135,11 +135,30 @@ if (isset($_POST)) {
 	$cpf = verifica_campo($_POST["txtCPF"]);
 	$cpf = str_replace(".", "", $cpf);
 	$cpf = str_replace("-", "", $cpf);
-    $erro_cpf = false;
-	//$erro_cpf = validaCPF($cpf);
-	if($erro_cpf) {
-		$erro_cpf = "CPF invalido";
+		
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
+	
+	// montagem da query
+	$query = "SELECT cpf
+			FROM usuario
+			WHERE cpf = $cpf";
+
+	// Executa a query
+	$resultado = mysqli_query($link, $query);
+	$total = mysqli_num_rows($resultado);
+	
+	if ($total > 0){
+		$erro = true;
+		$erro_cpf = "CPF já cadastrado";
+	}else{
+		
+		$erro_cpf = false;
 	}
+
+	//$erro_cpf = validaCPF($cpf);
+	//if($erro_cpf) {
+	//	$erro_cpf = "CPF invalido";
+	//}
   }
   
   if(!empty($_POST["txtDepto"])) {
