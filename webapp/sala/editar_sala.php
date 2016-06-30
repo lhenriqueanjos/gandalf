@@ -5,8 +5,6 @@
 	
 	// abre a conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
-	
-	//var_dump($_POST);
 
 	// query para carregar a chave no input desabilitado
 	$arr = $_POST['listaSalas'];
