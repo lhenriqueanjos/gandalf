@@ -148,6 +148,8 @@ if (isset($_POST)) {
   if(empty($_POST["txtSenha"])) {
     $erro_senha = "Senha é obrigatória.";
     $erro = true;
+  }else{
+	  $senha = $_POST["txtSenha"];
   }
 
 // Se a foto estiver sido selecionada
