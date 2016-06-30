@@ -2,31 +2,299 @@
 	$current_page = "usuario";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
-
+	
+	$varX = 0;
+	
 	// abre a conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
 	// query para carregar a chave no input desabilitado
-	$arr = $_POST['listaUsuarios'];
-	foreach ($arr as $auxiliar) {
+	if (isset($_POST['listaUsuarios'])){
+		$arr = $_POST['listaUsuarios'];
+		foreach ($arr as $auxiliar) {
 
+			// evitar sql inject
+			$auxiliar = mysqli_real_escape_string($link, $auxiliar);
+
+			// montagem da query
+			$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto 
+					FROM usuario 
+					WHERE id = $auxiliar";
+					
+			// Executa a query
+			$result = mysqli_query($link, $query);
+
+			$total = mysqli_num_rows($result);
+				
+			$row = mysqli_fetch_assoc($result); 
+
+			$caminhoFoto = "fotos/".$row['foto'];
+		}
+	}
+	
+	if (($_SERVER['REQUEST_METHOD'] == 'POST') && (isset($_POST['txtHidden']))){
+		
+		$auxiliar = $_POST["txtID"];
+		
+		if (!isset($_POST['listaUsuarios'])){
+
+			// montagem da query
+			$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto 
+					FROM usuario 
+					WHERE id = $auxiliar";
+					
+			// Executa a query
+			$result = mysqli_query($link, $query);
+				
+			$row = mysqli_fetch_assoc($result); 
+
+			$caminhoFoto = "fotos/".$row['foto'];
+		}
+		
+		function verifica_campo($texto) {
+
+			$texto = trim($texto);
+			$texto = stripslashes($texto);
+			$texto = htmlspecialchars($texto);
+			return $texto;
+		}
+
+		function validarCPF( $cpf = '' ) {
+
+			$cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
+			// Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
+			if ( strlen($cpf) != 11 || $cpf == '00000000000' || $cpf == '11111111111' || $cpf == '22222222222' || $cpf == '33333333333' || $cpf == '44444444444' || $cpf == '55555555555' || $cpf == '66666666666' || $cpf == '77777777777' || $cpf == '88888888888' || $cpf == '99999999999') {
+				return true;
+			} else { // Calcula os números para verificar se o CPF é verdadeiro
+				for ($t = 9; $t < 11; $t++) {
+					for ($d = 0, $c = 0; $c < $t; $c++) {
+						$d += $cpf{$c} * (($t + 1) - $c);
+					}
+					$d = ((10 * $d) % 11) % 10;
+					if ($cpf{$c} != $d) {
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+		
+		$nome_imagem = NULL;
+		$erro = false;
+		//$varX = 0;
+		
+		$varX = 1;
+
+		if(!empty($_POST["txtTipo"])) {
+			$tipo = $_POST['txtTipo'];
+		}
+	
+		if(empty($_POST["txtNome"])) {
+		$erro_nome = "Nome é obrigatório.";
+		$erro = true;
+		} else{
+
+		if (!preg_match("/^[a-zA-Z ]*$/",$_POST["txtNome"])) {
+			$erro = true;
+			$erro_nome = "Apenas letras e espaços são permitidos"; 
+		} else {
+			$nome = verifica_campo($_POST["txtNome"]);
+		}
+		}
+
+		if(!empty($_POST["txtMatricula"])) {
+		  $matricula = verifica_campo($_POST["txtMatricula"]);
+		} else {
+		  $matricula = NULL;
+		}
+
+		if(!empty($_POST["txtRua"])) {
+		$rua = verifica_campo($_POST["txtRua"]);
+		} else {
+		  $rua = NULL;
+		}
+
+		if(!empty($_POST["txtNumero"])) {
+		$numero = verifica_campo($_POST["txtNumero"]);
+		} else {
+		  $numero = NULL;
+		}
+
+		if(!empty($_POST["txtBairro"])) {
+		$bairro = verifica_campo($_POST["txtBairro"]);
+		} else {
+		  $bairro = NULL;
+		}
+
+		if(!empty($_POST["txtCEP"])) {
+		$cep = verifica_campo($_POST["txtCEP"]);
+		$cep = str_replace(".", "", $cep);
+		$cep = str_replace("-", "", $cep);
+
+		} else {
+		  $cep = NULL;
+		}
+
+		if(!empty($_POST["txtCidade"])) {
+		$cidade = verifica_campo($_POST["txtCidade"]);
+		} else {
+		  $cidade = NULL;
+		}
+
+		if(!empty($_POST["txtEstado"])) {
+		$estado = verifica_campo($_POST["txtEstado"]);
+		} else {
+		  $estado = NULL;
+		}
+
+		if(empty($_POST["txtEmail"])) {
+		$erro_email = "Email é obrigatório.";
+		$erro = true;
+		} else{
+		  
+		if (!filter_var($_POST["txtEmail"], FILTER_VALIDATE_EMAIL)) {
+			$erro = true;
+			$erro_email = "Formato de email inválido"; 
+		} else{
+			$email = verifica_campo($_POST["txtEmail"]);
+		}
+		}
+
+		if(!empty($_POST["txtTelefone"])) {
+		$telefone = verifica_campo($_POST["txtTelefone"]);
+		} else {
+		  $telefone = NULL;
+		}
+
+		if(empty($_POST["txtCPF"])) {
+		$erro_cpf = "CPF é obrigatório.";
+		$erro = true;
+		}
+		else{
+		$cpf = verifica_campo($_POST["txtCPF"]);
+		$cpf = str_replace(".", "", $cpf);
+		$cpf = str_replace("-", "", $cpf);
+		$erro_cpf = false;
+		//$erro_cpf = validaCPF($cpf);
+		if($erro_cpf) {
+			$erro_cpf = "CPF invalido";
+		}
+		}
+  
+		if(!empty($_POST["txtDepto"])) {
+		$departamento = verifica_campo($_POST["txtDepto"]);
+		} else {
+		  $departamento = NULL;
+		}
+  
+		if(empty($_POST["txtSenha"])) {
+		$erro_senha = "Senha é obrigatória.";
+		$erro = true;
+		}else{
+		  $senha = $_POST["txtSenha"];
+		}
+
+		// Se a foto estiver sido selecionada
+		if (isset($_FILES["txtFoto"])) {
+			$foto = $_FILES["txtFoto"];
+		}
+
+		if ((!empty($foto["name"])) && !$erro) {
+			
+			// Tamanho máximo do arquivo em bytes
+			$tamanho = 20000000; // 20MB
+
+			// Verifica se o arquivo é uma imagem
+			if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])) {
+			   $error[1] = "Isso não é uma imagem.";
+			   $erro = true;
+			} 
+				
+			// Verifica se o tamanho da imagem é maior que o tamanho permitido
+			if($foto["size"] > $tamanho) {
+				$error[2] = "A imagem deve ter no máximo ".$tamanho." bytes";
+				error_log("A imagem deve ter no máximo ".$tamanho." bytes");
+				$erro = true;
+			}
+
+			// Pega extensão da imagem
+			$fotoInfo = new SplFileInfo($foto["name"]);
+			$ext = $fotoInfo->getExtension();
+
+			// Gera um nome único para a imagem
+			$nome_imagem = md5(uniqid(time())) . "." . $ext;
+
+			$pastaFotos = "fotos";
+
+			if (!file_exists($pastaFotos)) {
+				 $oldmask = umask(0);  // helpful when used in linux server  
+				 mkdir($pastaFotos, 0744, true);
+			}
+
+			// Caminho de onde ficará a imagem
+			$caminho_imagem = $pastaFotos."/" . $nome_imagem;
+
+			// Faz o upload da imagem para seu respectivo caminho
+			$moveu = move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+
+			if (!$moveu) {
+				error_log("Nao moveu a imagem de ".$foto["tmp_name"]." para ". $caminho_imagem);
+			}
+		}
+
+		if (!$erro) {
+		  
 		// evitar sql inject
-		$auxiliar = mysqli_real_escape_string($link, $auxiliar);
+		$nome = mysqli_real_escape_string($link, $nome);
+		$matricula = mysqli_real_escape_string($link, $matricula);
+		$matricula = (empty($matricula)) ? "null" : $matricula;
+		$rua = mysqli_real_escape_string($link, $rua);
+		$numero = mysqli_real_escape_string($link, $numero);
+		$numero = (empty($numero)) ? "null" : $numero;
+		$bairro = mysqli_real_escape_string($link, $bairro);
+		$cep = mysqli_real_escape_string($link, $cep);
+		$cidade = mysqli_real_escape_string($link, $cidade);
+		$estado = mysqli_real_escape_string($link, $estado);
+		$email = mysqli_real_escape_string($link, $email);
+		$telefone = mysqli_real_escape_string($link, $telefone);
+		$cpf = mysqli_real_escape_string($link, $cpf);
+		$departamento = mysqli_real_escape_string($link, $departamento);
+		$senha = mysqli_real_escape_string($link, $senha);
+		$tipo = mysqli_real_escape_string($link, $tipo);
 
 		// montagem da query
-		$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto 
-				FROM usuario 
+		$query = "UPDATE usuario 
+				SET id_categoria = $tipo,
+					matricula = $matricula,
+					nome = '$nome',
+					departamento = '$departamento',
+					rua = '$rua',
+					numero = $numero,
+					bairro = '$bairro',
+					cep = '$cep',
+					cidade = '$cidade',
+					estado = '$estado',
+					telefone = '$telefone',
+					cpf = '$cpf',
+					email = '$email',
+					foto = '$nome_imagem',
+					senha = MD5('$senha')
 				WHERE id = $auxiliar";
-				
+		
 		// Executa a query
-		$result = mysqli_query($link, $query);
+		$inserir = mysqli_query($link, $query);
 
-		$total = mysqli_num_rows($result);
-			
-		$row = mysqli_fetch_assoc($result); 
+		if (!$inserir) {
+			// TODO redirecionar para uma sala de erro padronizada
+			error_log("Não foi possível inserir o usuário, tente novamente.");
+			// Exibe dados sobre o erro:
+			error_log("Dados sobre o erro:" . mysqli_error($link));
 
-		$caminhoFoto = "fotos/".$row['foto'];
+		  }
+		}	
 	}
+	$auxiliarID = $auxiliar;
+
 ?>
 		<div class="col-xs-10">
 			<div class="row">
@@ -40,7 +308,21 @@
 				</div>
 			</div>
 
-			<form action="editar_usuario_action.php" method="POST">
+			  <?php if(($_SERVER["REQUEST_METHOD"] == "POST") && $varX == 1): ?>
+				<?php if (!$erro): ?>
+				<?php header('location:/gandalf/webapp/usuario/editar_usuario_action.php'); ?>
+				<?php else: ?>
+				  <div class="alert alert-danger">
+					Erros no formulário: 
+					<?php if(($erro) && (!empty($erro_nome))) {echo "<br>Nome: $erro_nome";}?>
+					<?php if(($erro) && (!empty($erro_email))) {echo "<br>E-mail: $erro_email";}?>
+					<?php if(($erro) && (!empty($erro_senha))) {echo "<br>Senha: $erro_senha";}?>
+					<?php if(($erro) && (!empty($erro_cpf))) {echo "<br>CPF: $erro_cpf";}?>
+				  </div>
+				<?php endif; ?>
+			  <?php endif; ?>
+
+			<form action="#" method="POST">
 				<div class="row">
 					<div class="form-group col-xs-3">
 
@@ -58,7 +340,8 @@
 					</div>
 					
 					<div class="form-group col-xs-9">
-						<input type="hidden" class="form-control" id="txtHidden" name="txtHidden" required="required" value="1">
+						<input type="hidden" class="form-control" id="txtHidden" name="txtHidden" value="1">
+						<input type="hidden" class="form-control" id="txtID" name="txtID" value="<? =$auxiliarID ?>">
 				
 						<label for="txtNome">Nome: </label>
 						<input type="text" class="form-control" id="txtNome" name="txtNome" required="required" value="<?=$row['nome']?>" >
