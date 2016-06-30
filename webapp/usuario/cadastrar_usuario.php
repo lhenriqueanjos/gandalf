@@ -320,10 +320,14 @@ if ((!empty($foto["name"])) && !$erro) {
 					<div class="form-group col-xs-3">
 						<label for="txtTipo">Tipo:</label>
 						<br>
-						<select name="txtTipo" class="form-control" disabled>
-							<option value="administrador">Administrador</option>
-							<option value="administrador">Tag/Cartão</option>
-							<option value="administrador" selected>Cliente</option>
+						<select name="txtTipo" class="form-control" <?= ($categoria != 'ADMINISTRADOR') ? 'disabled' : '' ?> >
+							<option value="1">
+								Administrador
+							</option>
+							<option value="2" 
+								<?= ($categoria != 'ADMINISTRADOR') ? 'selected' : '' ?> >
+								Cliente
+							</option>
 						</select>
 					</div>				
 				
