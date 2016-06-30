@@ -37,6 +37,7 @@ function validarCPF( $cpf = '' ) {
 }
 
 $nome = $tipo = $matricula = $cep = $rua = $numero = $bairro = $cidade = $estado = $email = $departamento = $telefone = $foto = $senha = NULL;
+$nome_imagem = NULL;
 $erro = false;
 $varX = 0;
 
@@ -45,7 +46,9 @@ if (isset($_POST)) {
 	
 	$varX = 1;
 
-	$tipo = $_POST['txtTipo'];
+	if(!empty($_POST["txtTipo"])) {
+		$tipo = $_POST['txtTipo'];
+	}
 	
   if(empty($_POST["txtNome"])) {
     $erro_nome = "Nome é obrigatório.";
@@ -151,41 +154,51 @@ if (isset($_POST)) {
   }
 
 // Se a foto estiver sido selecionada
-if (!empty($_FILES["txtFoto"])) {
+if (isset($_FILES["txtFoto"])) {
 	$foto = $_FILES["txtFoto"];
 }
 
 if ((!empty($foto["name"])) && !$erro) {
 	
 	// Tamanho máximo do arquivo em bytes
-	$tamanho = 1000000;
+	$tamanho = 20000000; // 20MB
 
 	// Verifica se o arquivo é uma imagem
 	if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])) {
 	   $error[1] = "Isso não é uma imagem.";
 	   $erro = true;
 	} 
-
-	// Pega as dimensões da imagem
-	$dimensoes = getimagesize($foto["tmp_name"]);
 		
 	// Verifica se o tamanho da imagem é maior que o tamanho permitido
 	if($foto["size"] > $tamanho) {
 		$error[2] = "A imagem deve ter no máximo ".$tamanho." bytes";
+		error_log("A imagem deve ter no máximo ".$tamanho." bytes");
 		$erro = true;
 	}
 
 	// Pega extensão da imagem
-	preg_match("/\.(gif|bmp|png|jpg|jpeg) {1}$/i", $foto["name"], $ext);
+	$fotoInfo = new SplFileInfo($foto["name"]);
+	$ext = $fotoInfo->getExtension();
 
 	// Gera um nome único para a imagem
-	$nome_imagem = md5(uniqid(time())) . "." . $ext[1];
+	$nome_imagem = md5(uniqid(time())) . "." . $ext;
+
+	$pastaFotos = "fotos";
+
+	if (!file_exists($pastaFotos)) {
+	     $oldmask = umask(0);  // helpful when used in linux server  
+	     mkdir($pastaFotos, 0744, true);
+	}
 
 	// Caminho de onde ficará a imagem
-	$caminho_imagem = "webapp/usuario/fotos/" . $nome_imagem;
+	$caminho_imagem = $pastaFotos."/" . $nome_imagem;
 
 	// Faz o upload da imagem para seu respectivo caminho
-	move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+	$moveu = move_uploaded_file($foto["tmp_name"], $caminho_imagem);
+
+	if (!$moveu) {
+		error_log("Nao moveu a imagem de ".$foto["tmp_name"]." para ". $caminho_imagem);
+	}
 }
 
   if (!$erro) {
@@ -335,6 +348,7 @@ if ((!empty($foto["name"])) && !$erro) {
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtFoto">Foto:</label>
+						<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
 						<input type="file" class="form-control" id="txtFoto" name="txtFoto">
 					</div>
 				</div>

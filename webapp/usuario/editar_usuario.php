@@ -14,7 +14,7 @@
 		$auxiliar = mysqli_real_escape_string($link, $auxiliar);
 
 		// montagem da query
-		$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email 
+		$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto 
 				FROM usuario 
 				WHERE id = $auxiliar";
 				
@@ -24,6 +24,8 @@
 		$total = mysqli_num_rows($result);
 			
 		$row = mysqli_fetch_assoc($result); 
+
+		$caminhoFoto = "fotos/".$row['foto'];
 	}
 ?>
 		<div class="col-xs-10">
@@ -46,9 +48,9 @@
 							<div class="panel-heading">
 								<h3 class="panel-title">Imagem</h3>
 							</div>
-							<div class="panel-body">
-								<img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/resources/images/3x4.jpg" 
-									id="imgFoto" class="img-responsive" style="margin-bottom: 6pt;"> <!-- Deve carregar a foto do BD -->
+							<div class="panel-body text-center">
+								<img src="<?= $caminhoFoto ?>" 
+									id="imgFoto" class="img-rounded" style="margin-bottom: 6pt; max-height: 158px; max-width: 178px;"> <!-- Deve carregar a foto do BD -->
 								<label for="txtFoto">Alterar/Incluir Foto:</label>
 								<input type="file" class="form-control" id="txtFoto">
 							</div>
