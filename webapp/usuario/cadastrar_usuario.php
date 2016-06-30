@@ -319,7 +319,7 @@ if ((!empty($foto["name"])) && !$erro) {
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtTag">Tag:</label> 
-						<input type="number" step="0" class="form-control" id="txtTag" name="txtTag" disabled> <!- Este deve ficar inativo quando não for acessado por um administrador ->
+						<input type="number" step="0" class="form-control" id="txtTag" name="txtTag" disabled> <!-- Este deve ficar inativo quando não for acessado por um administrador -->
 					</div>
 					<div class="form-group col-xs-5">
 						<label for="txtTipo">Tipo:</label>
