@@ -54,7 +54,7 @@
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG" name="opt">
-							<option value="" selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
+							<option value="" selected>selecione </option> <!-- Quando o login tiver implementado, fazer o value receber o id do usuario logado? -->
 							<?php
 								do {
 							?>
@@ -93,20 +93,23 @@
 			
 			<div class="row">
 				<div class="col-xs-10">
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<tr>
-								<th colspan=2>Últimos 5 acessos</td>
-							</tr>
-						</thead>
-						<thead>
-							<th>Acesso</th>
-							<th>Local</th>
-						</thead>
-						<tbody>
-						<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/tag/pesquisar_tag_historico.php"; ?>
-						</tbody>
-					</table>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">Últimos 5 acessos</h3>
+						</div>
+						<div class="panel-body">
+							<table class="table table-bordered table-hover table-striped">
+								<thead>
+									<th>Acesso</th>
+									<th>Local</th>
+								</thead>
+								<tbody>
+								<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/tag/pesquisar_tag_historico.php"; ?>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>				
 		</div>
