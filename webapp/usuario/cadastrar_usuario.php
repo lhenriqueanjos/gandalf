@@ -4,6 +4,10 @@ $current_page = "usuario";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 
+if (!isset($_POST["txtHidden"])){
+	unset($_SERVER);
+}
+
 function verifica_campo($texto){
     
   $texto = trim($texto);
@@ -12,7 +16,7 @@ function verifica_campo($texto){
   return $texto;
 }
 
-function validarCPF( $cpf = '' ) { 
+function validarCPF( $cpf = '' ){
 
 	$cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
 	// Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
@@ -34,9 +38,13 @@ function validarCPF( $cpf = '' ) {
 
 $nome = $matricula = $cep = $rua = $numero = $bairro = $cidade = $estado = $email = $departamento = $telefone = $foto = $senha = NULL;
 $erro = false;
+$varX = 0;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
+//if ($_SERVER["REQUEST_METHOD"] == "POST"){
+if (isset($_POST)){
+	
+	$varX = 1;
+	
   if(empty($_POST["txtNome"])){
     $erro_nome = "Nome é obrigatório.";
     $erro = true;
@@ -140,7 +148,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
   }
 
 // Se a foto estiver sido selecionada
-$foto = $_FILES["txtFoto"];
+if (!empty($_FILES["txtFoto"])){
+	$foto = $_FILES["txtFoto"];
+}
+
 if ((!empty($foto["name"])) && !$erro) {
 	
 	// Tamanho máximo do arquivo em bytes
@@ -224,7 +235,7 @@ if ((!empty($foto["name"])) && !$erro) {
 				</div>
 			</div>
 
-			  <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+			  <?php if(isset($_SERVER) && $varX == 1) ://($_SERVER["REQUEST_METHOD"] == "POST"): ?>
 				<?php if (!$erro): ?>
 				<?php header('location:/gandalf/webapp/usuario/cadastrar_usuario_action1.php'); ?>
 				<?php else: ?>
@@ -236,10 +247,13 @@ if ((!empty($foto["name"])) && !$erro) {
 					<?php if(($erro) && (!empty($erro_cpf))){echo "<br>CPF: $erro_cpf";}?>
 				  </div>
 				<?php endif; ?>
-			  <?php endif; ?>			
+			  <?php endif; ?>
 
 			<form action="#" enctype="multipart/form-data" method="POST">
 				<div class="row">
+					<div class="form-group col-xs-9">
+						<input type="hidden" class="form-control" id="txtHidden" name="txtHidden" required="required" value="1">
+					</div>
 					<div class="form-group col-xs-9">
 						<label for="txtNome">Nome: </label>
 						<input type="text" class="form-control" id="txtNome" name="txtNome" required="required" value="<?php echo $nome; ?>">
@@ -338,5 +352,7 @@ if ((!empty($foto["name"])) && !$erro) {
 			</form>
 		</div>
 <?php	
+	if (isset($_SERVER)){
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
+	}
 ?>
