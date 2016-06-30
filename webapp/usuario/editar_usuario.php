@@ -341,7 +341,7 @@
 					
 					<div class="form-group col-xs-9">
 						<input type="hidden" class="form-control" id="txtHidden" name="txtHidden" value="1">
-						<input type="hidden" class="form-control" id="txtID" name="txtID" value="<? =$auxiliarID ?>">
+						<input type="hidden" class="form-control" id="txtID" name="txtID" value="<?= $auxiliarID ?>">
 				
 						<label for="txtNome">Nome: </label>
 						<input type="text" class="form-control" id="txtNome" name="txtNome" required="required" value="<?=$row['nome']?>" >
