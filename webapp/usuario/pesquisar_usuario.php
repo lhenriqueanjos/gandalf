@@ -52,7 +52,7 @@
 				</div>
 			</div>
 		
-			<form action="#" method="POST">
+			<form action="#" method="POST" id="formDados">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtNome">Nome:</label>
@@ -142,7 +142,7 @@
 							if(isset($_POST) and $total > 0) {
 						?>
 							<!-- Botões exibidos apenas se tiver registros na tabela -->
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-default" formaction="editar_usuario.php" onclick="testaCheck()">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
 							<button type="submit" class="btn btn-default">
