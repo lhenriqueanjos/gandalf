@@ -71,7 +71,7 @@ if (!$inserir) {
 			<div class="row">
 				<div class="col-xs-12">
 					<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Pesquisar uma sala
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Pesquisar uma sala
 					</a>
 				</div>
 			</div>

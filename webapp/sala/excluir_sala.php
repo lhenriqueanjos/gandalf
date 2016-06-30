@@ -63,6 +63,14 @@ if (!$inserir) {
 
 			<div class="row">
 				<div class="col-xs-12">
+					<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/pesquisar.php">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Pesquisar salas
+					</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
 					<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/sala/cadastrar.php">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir uma nova Sala
 					</a>
