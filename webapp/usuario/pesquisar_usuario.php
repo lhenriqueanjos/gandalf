@@ -96,7 +96,7 @@
 							 ?>
 								<tr>
 									<td>
-										<input type="checkbox" name="<?=$linha['id']?>" />
+										<input type="checkbox" name="listaUsuarios[]" value="<?=$linha['id']?>" />
 									</td>
 									<td><?=$linha['nome']?></td>
 									<td><?=$linha['matricula']?></td> 
