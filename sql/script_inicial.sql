@@ -42,7 +42,7 @@ CREATE TABLE `categoria_usuario` (
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_categoria` int(11) DEFAULT 2,
+  `id_categoria` int(11) DEFAULT '2',
   `matricula` int(11) DEFAULT NULL,
   `nome` varchar(50) DEFAULT NULL,
   `departamento` varchar(25) DEFAULT NULL,
@@ -55,12 +55,13 @@ CREATE TABLE `usuario` (
   `telefone` varchar(16) DEFAULT NULL,
   `cpf` varchar(11) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `foto` varbinary(100) DEFAULT NULL,
+  `foto` varchar(100) DEFAULT NULL,
   `senha` varbinary(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_categoria_usuario` (`id_categoria`),
   CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+SELECT * FROM gandalf.categoria_usuario;
 
 CREATE TABLE `permissao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
