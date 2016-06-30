@@ -22,6 +22,8 @@ CREATE TABLE `tag` (
   CONSTRAINT `fk_tag_categoria_tag` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `tag` ADD UNIQUE(`codigo`);
+
 CREATE TABLE `acesso` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_tag` int(11) DEFAULT NULL,
@@ -63,6 +65,8 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 SELECT * FROM gandalf.categoria_usuario;
 
+ALTER TABLE `usuario` ADD UNIQUE(`cpf`);
+ 
 CREATE TABLE `permissao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_sala` int(11) DEFAULT NULL,
@@ -95,7 +99,7 @@ CREATE TABLE `rel_usuario_tag` (
   KEY `fk_rel_usuario_tag_tag` (`id_tag`),
   KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
   CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `pais` (
