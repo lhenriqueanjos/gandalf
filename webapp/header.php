@@ -6,6 +6,8 @@
 
 	$logado = $_SESSION['nomeUsuario'];
 	$categoria = $_SESSION['categoria'];
+	$idUsuario = $_SESSION['idUsuario'];
+	$idTag = $_SESSION['idTag'];
 ?>
 <html>
 <head>

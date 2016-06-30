@@ -3,6 +3,7 @@
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 	
+	$totalHist = 0;
 	// abrir conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
@@ -14,8 +15,8 @@
     
     $row = mysqli_fetch_assoc($result); 
 	
-	$var1 = " ";
-	$var2 = " ";
+	$var1 = NULL;
+	$var2 = NULL;
 	$var3 = 2; // TODO -> Substituir esse numero "2" pelo ID do usuario que esta logado
 	
 	// verifica se já clicou no pesquisar e consulta o banco de acordo com o select do usuário
@@ -54,7 +55,7 @@
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
 						<select class="form-control" id="selTAG" name="opt">
-							<option value="" selected>selecione </option> <!-- Quando o login tiver implementado, fazer o value receber o id do usuario logado? -->
+							<option value="" selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
 							<?php
 								do {
 							?>
@@ -91,27 +92,40 @@
 				</div>
 			</form>
 			
-			<div class="row">
-				<div class="col-xs-12">
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Últimos 5 acessos</h3>
-						</div>
-						<div class="panel-body">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
-									<th>Acesso</th>
-									<th>Local</th>
-								</thead>
-								<tbody>
-								<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/tag/pesquisar_tag_historico.php"; ?>
-								</tbody>
-							</table>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Histórico de acessos</h3>
+				</div>
+				<div class="panel-body">
+					<?php 
+						// se o usuário tiver feito a pesquisa, exibe a tabela
+						if(isset($_POST) and $var1 != NULL) {
+					?>
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+							<th>Acesso</th>
+							<th>Local</th>
+						</thead>
+						<tbody>
+							<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/tag/pesquisar_tag_historico.php"; ?>
+						</tbody>
+					</table>
+					<?php 
+						} else { 
+						// caso não tenha pesquisado ou a pesquisa não tiver resultados, exibe mensagem amigável
+					?>
+						<span>
+							Nenhum registro para exibir.
+						</span>
+					<?php 
+						} 
+					?>
+					<div class="row">
+						<div class="form-group col-xs-12">
 						</div>
 					</div>
 				</div>
-			</div>				
+			</div>
 		</div>
 <?php	
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
