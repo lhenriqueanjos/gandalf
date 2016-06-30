@@ -14,7 +14,7 @@
 		$auxiliar = mysqli_real_escape_string($link, $auxiliar);
 
 		// montagem da query
-		$query = "SELECT matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email 
+		$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email 
 				FROM usuario 
 				WHERE id = $auxiliar";
 				
@@ -118,11 +118,14 @@
 				
 					<div class="form-group col-xs-4">
 						<label for="txtTipo">Tipo:</label>
-						<br>
-						<select name="txtTipo" class="form-control" disabled>
-							<option value="administrador">Administrador</option>
-							<option value="administrador">Tag/Cartão</option>
-							<option value="administrador" selected>Cliente</option>
+						<select name="txtTipo" class="form-control" <?= ($categoria != 'ADMINISTRADOR') ? 'disabled' : '' ?> >
+							<option value="1" <?= ($row['id_categoria'] == 1) ? 'selected' : '' ?> >
+								Administrador
+							</option>
+							<option value="2" 
+								<?= ($categoria != 'ADMINISTRADOR' || $row['id_categoria'] == 2) ? 'selected' : '' ?> >
+								Cliente
+							</option>
 						</select>
 					</div>
 
