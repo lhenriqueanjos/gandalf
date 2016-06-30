@@ -19,14 +19,14 @@ for(i=0;i<inputs.length;i++){
 //escrevendo o resultado	
 if (checados == 0){
 
-	alert("Você não selecionou nenhum registro!");	
+	alert("Você não selecionou nenhum registro.");	
 	var mudar = document.getElementById('formDados');
 	mudar.setAttribute('onsubmit', 'return false');
 
 }else{
 	if (checados > 1){
 
-	alert("Você só pode editar uma sala por vez!");	
+	alert("Você só pode editar um registro por vez.");	
 	var mudar = document.getElementById('formDados');
 	mudar.setAttribute('onsubmit', 'return false');
 	
