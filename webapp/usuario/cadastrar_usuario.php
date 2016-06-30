@@ -86,6 +86,9 @@ if (isset($_POST)){
 
   if(!empty($_POST["txtCEP"])){
 	$cep = verifica_campo($_POST["txtCEP"]);
+	$cep = str_replace(".", "", $cep);
+	$cep = str_replace("-", "", $cep);
+
   }else{
 	  $cep = NULL;
   }
@@ -128,7 +131,9 @@ if (isset($_POST)){
     $erro = true;
   }
   else{
-    $cpf = verifica_campo($_POST["txtCPF"]);
+	$cpf = verifica_campo($_POST["txtCPF"]);
+	$cpf = str_replace(".", "", $cpf);
+	$cpf = str_replace("-", "", $cpf);
     $erro_cpf = false;
 	//$erro_cpf = validaCPF($cpf);
 	if($erro_cpf){
@@ -237,7 +242,7 @@ if ((!empty($foto["name"])) && !$erro) {
 
 			  <?php if(isset($_SERVER) && $varX == 1) ://($_SERVER["REQUEST_METHOD"] == "POST"): ?>
 				<?php if (!$erro): ?>
-				<?php header('location:/gandalf/webapp/usuario/cadastrar_usuario_action1.php'); ?>
+				<?php header('location:/gandalf/webapp/usuario/cadastrar_usuario_action.php'); ?>
 				<?php else: ?>
 				  <div class="alert alert-danger">
 					Erros no formulário: 
