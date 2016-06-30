@@ -318,7 +318,6 @@ if ((!empty($foto["name"])) && !$erro) {
 				<div class="row">
 					<div class="form-group col-xs-3">
 						<label for="txtTipo">Tipo:</label>
-						<br>
 						<select name="txtTipo" class="form-control" <?= ($categoria != 'ADMINISTRADOR') ? 'disabled' : '' ?> >
 							<option value="1">
 								Administrador
