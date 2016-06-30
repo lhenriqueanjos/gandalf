@@ -1,3 +1,12 @@
+<?php
+
+$naoEncontrado = false;
+
+if (isset($_GET["naoEncontrado"])){
+$naoEncontrado = true;
+}
+
+?>
 <html>
 <head>
 	<title>Sistema de Controle de Acesso</title>
@@ -23,10 +32,8 @@
 		<div class="col-xs-3">
 
 			<?php 
-				// verifica se já tentou fazer login
-				if($_SERVER['REQUEST_METHOD'] == 'GET') {
-					$naoEncontrado = $_GET['naoEncontrado'];
-					if (isset($naoEncontrado)) {
+				
+					if ($naoEncontrado == true) {
 			?>
 			<div class="row">
 				<div class="col-xs-12">
@@ -37,7 +44,6 @@
 			</div>
 			<?php
 					}
-				}
 			?>
 
 			<div class="panel panel-default">
