@@ -59,6 +59,7 @@ CREATE TABLE `usuario` (
   `email` varchar(50) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `senha` varbinary(100) DEFAULT NULL,
+  `status` int(1) DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_categoria_usuario` (`id_categoria`),
   CONSTRAINT `fk_usuario_categoria_usuario` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -99,7 +100,7 @@ CREATE TABLE `rel_usuario_tag` (
   KEY `fk_rel_usuario_tag_tag` (`id_tag`),
   KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
   CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+  CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `pais` (

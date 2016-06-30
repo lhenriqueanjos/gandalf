@@ -15,7 +15,12 @@ $arr = $_POST['listaUsuarios'];
 	$idUsuario = mysqli_real_escape_string($link, $idUsuario);
 
 	// montagem da query
-	$query = "DELETE FROM usuario 
+	//$query = "DELETE FROM usuario 
+	//		WHERE id = $idUsuario";
+	
+	//montagem da query
+	$query = "UPDATE usuario
+			SET status = 0
 			WHERE id = $idUsuario";
 			
 	// Executa a query
@@ -25,7 +30,7 @@ $arr = $_POST['listaUsuarios'];
 
 if (!$inserir) {
 	// TODO redirecionar para uma sala de erro padronizada
-	echo "Não foi excluir o(s) usuário(s), tente novamente.";
+	echo "Não foi possível excluir o(s) usuário(s), tente novamente.";
 	// Exibe dados sobre o erro:
 	echo "Dados sobre o erro:" . mysqli_error($link);
 }
