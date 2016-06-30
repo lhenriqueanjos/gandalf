@@ -4,19 +4,19 @@ $current_page = "usuario";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 
-if (!isset($_POST["txtHidden"])){
+if (!isset($_POST["txtHidden"])) {
 	unset($_SERVER);
 }
 
-function verifica_campo($texto){
-    
+function verifica_campo($texto) {
+
   $texto = trim($texto);
   $texto = stripslashes($texto);
   $texto = htmlspecialchars($texto);
   return $texto;
 }
 
-function validarCPF( $cpf = '' ){
+function validarCPF( $cpf = '' ) {
 
 	$cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
 	// Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
@@ -36,97 +36,95 @@ function validarCPF( $cpf = '' ){
 	}
 }
 
-$nome = $matricula = $cep = $rua = $numero = $bairro = $cidade = $estado = $email = $departamento = $telefone = $foto = $senha = NULL;
+$nome = $tipo = $matricula = $cep = $rua = $numero = $bairro = $cidade = $estado = $email = $departamento = $telefone = $foto = $senha = NULL;
 $erro = false;
 $varX = 0;
 
-//if ($_SERVER["REQUEST_METHOD"] == "POST"){
-if (isset($_POST)){
+//if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST)) {
 	
 	$varX = 1;
+
+	$tipo = $_POST['txtTipo'];
 	
-  if(empty($_POST["txtNome"])){
+  if(empty($_POST["txtNome"])) {
     $erro_nome = "Nome é obrigatório.";
     $erro = true;
-  }
-  else{
+  } else{
 
 	if (!preg_match("/^[a-zA-Z ]*$/",$_POST["txtNome"])) {
-	$erro = true;
-	$erro_nome = "Apenas letras e espaços são permitidos"; 
-	}
-	else{
+		$erro = true;
+		$erro_nome = "Apenas letras e espaços são permitidos"; 
+	} else {
 		$nome = verifica_campo($_POST["txtNome"]);
 	}
   }
 
-  if(!empty($_POST["txtMatricula"])){
-	$matricula = verifica_campo($_POST["txtMatricula"]);
-  }else{
+  if(!empty($_POST["txtMatricula"])) {
+	  $matricula = verifica_campo($_POST["txtMatricula"]);
+  } else {
 	  $matricula = NULL;
   }
 
-  if(!empty($_POST["txtRua"])){
+  if(!empty($_POST["txtRua"])) {
 	$rua = verifica_campo($_POST["txtRua"]);
-  }else{
+  } else {
 	  $rua = NULL;
   }
 
-  if(!empty($_POST["txtNumero"])){
+  if(!empty($_POST["txtNumero"])) {
 	$numero = verifica_campo($_POST["txtNumero"]);
-  }else{
+  } else {
 	  $numero = NULL;
   }
 
-  if(!empty($_POST["txtBairro"])){
+  if(!empty($_POST["txtBairro"])) {
 	$bairro = verifica_campo($_POST["txtBairro"]);
-  }else{
+  } else {
 	  $bairro = NULL;
   }
 
-  if(!empty($_POST["txtCEP"])){
+  if(!empty($_POST["txtCEP"])) {
 	$cep = verifica_campo($_POST["txtCEP"]);
 	$cep = str_replace(".", "", $cep);
 	$cep = str_replace("-", "", $cep);
 
-  }else{
+  } else {
 	  $cep = NULL;
   }
 
-  if(!empty($_POST["txtCidade"])){
+  if(!empty($_POST["txtCidade"])) {
 	$cidade = verifica_campo($_POST["txtCidade"]);
-  }else{
+  } else {
 	  $cidade = NULL;
   }
 
-  if(!empty($_POST["txtEstado"])){
+  if(!empty($_POST["txtEstado"])) {
 	$estado = verifica_campo($_POST["txtEstado"]);
-  }else{
+  } else {
 	  $estado = NULL;
   }
 
-  if(empty($_POST["txtEmail"])){
+  if(empty($_POST["txtEmail"])) {
     $erro_email = "Email é obrigatório.";
     $erro = true;
-  }
-  else{
+  } else{
 	  
 	if (!filter_var($_POST["txtEmail"], FILTER_VALIDATE_EMAIL)) {
-    $erro = true;
-	$erro_email = "Formato de email inválido"; 
-	}
-	else{
+	    $erro = true;
+		$erro_email = "Formato de email inválido"; 
+	} else{
 		$email = verifica_campo($_POST["txtEmail"]);
 	}
   }
 
-  if(!empty($_POST["txtTelefone"])){
+  if(!empty($_POST["txtTelefone"])) {
 	$telefone = verifica_campo($_POST["txtTelefone"]);
-  }else{
+  } else {
 	  $telefone = NULL;
   }
 
-  if(empty($_POST["txtCPF"])){
+  if(empty($_POST["txtCPF"])) {
     $erro_cpf = "CPF é obrigatório.";
     $erro = true;
   }
@@ -136,24 +134,24 @@ if (isset($_POST)){
 	$cpf = str_replace("-", "", $cpf);
     $erro_cpf = false;
 	//$erro_cpf = validaCPF($cpf);
-	if($erro_cpf){
+	if($erro_cpf) {
 		$erro_cpf = "CPF invalido";
 	}
   }
   
-  if(!empty($_POST["txtDepto"])){
+  if(!empty($_POST["txtDepto"])) {
 	$departamento = verifica_campo($_POST["txtDepto"]);
-  }else{
+  } else {
 	  $departamento = NULL;
   }
   
-  if(empty($_POST["txtSenha"])){
+  if(empty($_POST["txtSenha"])) {
     $erro_senha = "Senha é obrigatória.";
     $erro = true;
   }
 
 // Se a foto estiver sido selecionada
-if (!empty($_FILES["txtFoto"])){
+if (!empty($_FILES["txtFoto"])) {
 	$foto = $_FILES["txtFoto"];
 }
 
@@ -163,7 +161,7 @@ if ((!empty($foto["name"])) && !$erro) {
 	$tamanho = 1000000;
 
 	// Verifica se o arquivo é uma imagem
-	if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
+	if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])) {
 	   $error[1] = "Isso não é uma imagem.";
 	   $erro = true;
 	} 
@@ -178,7 +176,7 @@ if ((!empty($foto["name"])) && !$erro) {
 	}
 
 	// Pega extensão da imagem
-	preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
+	preg_match("/\.(gif|bmp|png|jpg|jpeg) {1}$/i", $foto["name"], $ext);
 
 	// Gera um nome único para a imagem
 	$nome_imagem = md5(uniqid(time())) . "." . $ext[1];
@@ -190,7 +188,7 @@ if ((!empty($foto["name"])) && !$erro) {
 	move_uploaded_file($foto["tmp_name"], $caminho_imagem);
 }
 
-  if (!$erro){
+  if (!$erro) {
 	  
 	// abre a conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
@@ -211,9 +209,10 @@ if ((!empty($foto["name"])) && !$erro) {
 	$cpf = mysqli_real_escape_string($link, $cpf);
 	$departamento = mysqli_real_escape_string($link, $departamento);
 	$senha = mysqli_real_escape_string($link, $senha);
+	$tipo = mysqli_real_escape_string($link, $tipo);
 
 	// montagem da query
-	$query = "INSERT INTO usuario (matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha) VALUES (".$matricula.", '".$nome."', '".$departamento."', '".$rua."', ".$numero.", '".$bairro."', '".$cep."', '".$cidade."', '".$estado."', '".$telefone."', '".$cpf."', '".$email."', '".$nome_imagem."', MD5('".$senha."'))";
+	$query = "INSERT INTO usuario (id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha) VALUES (".$tipo.", ".$matricula.", '".$nome."', '".$departamento."', '".$rua."', ".$numero.", '".$bairro."', '".$cep."', '".$cidade."', '".$estado."', '".$telefone."', '".$cpf."', '".$email."', '".$nome_imagem."', MD5('".$senha."'))";
 
 	// Executa a query
 	$inserir = mysqli_query($link, $query);
@@ -246,10 +245,10 @@ if ((!empty($foto["name"])) && !$erro) {
 				<?php else: ?>
 				  <div class="alert alert-danger">
 					Erros no formulário: 
-					<?php if(($erro) && (!empty($erro_nome))){echo "<br>Nome: $erro_nome";}?>
-					<?php if(($erro) && (!empty($erro_email))){echo "<br>E-mail: $erro_email";}?>
-					<?php if(($erro) && (!empty($erro_senha))){echo "<br>Senha: $erro_senha";}?>
-					<?php if(($erro) && (!empty($erro_cpf))){echo "<br>CPF: $erro_cpf";}?>
+					<?php if(($erro) && (!empty($erro_nome))) {echo "<br>Nome: $erro_nome";}?>
+					<?php if(($erro) && (!empty($erro_email))) {echo "<br>E-mail: $erro_email";}?>
+					<?php if(($erro) && (!empty($erro_senha))) {echo "<br>Senha: $erro_senha";}?>
+					<?php if(($erro) && (!empty($erro_cpf))) {echo "<br>CPF: $erro_cpf";}?>
 				  </div>
 				<?php endif; ?>
 			  <?php endif; ?>
@@ -354,7 +353,7 @@ if ((!empty($foto["name"])) && !$erro) {
 			</form>
 		</div>
 <?php	
-	if (isset($_SERVER)){
+	if (isset($_SERVER)) {
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/footer.php";
 	}
 ?>
