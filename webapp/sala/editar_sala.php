@@ -9,8 +9,8 @@
 	//var_dump($_POST);
 
 	// query para carregar a chave no input desabilitado
-		$arr = $_POST['listaSalas'];
-		foreach ($arr as $auxiliar) {
+	$arr = $_POST['listaSalas'];
+	foreach ($arr as $auxiliar) {
 
 		// evitar sql inject
 		$auxiliar = mysqli_real_escape_string($link, $auxiliar);
@@ -26,8 +26,8 @@
 		$total = mysqli_num_rows($result);
 			
 		$row = mysqli_fetch_assoc($result); 
-		}
-	
+	}
+
 ?>
 		<div class="col-xs-10">
 			<div class="row">
