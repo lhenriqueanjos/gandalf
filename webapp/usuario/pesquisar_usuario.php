@@ -52,7 +52,7 @@
 				</div>
 			</div>
 		
-			<form action="#" method="POST" id="formDados">
+			<form action="#" method="POST" id="formDados" onsubmit="return true">
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtNome">Nome:</label>
@@ -145,7 +145,7 @@
 							<button type="submit" class="btn btn-default" formaction="editar_usuario.php" onclick="testaCheck()">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-default" formaction="excluir_usuario.php" onclick="testaCheckExc()">
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
 							</button>
 						<?php 
