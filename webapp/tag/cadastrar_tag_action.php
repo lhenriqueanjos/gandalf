@@ -8,13 +8,15 @@ require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 // variáveis para insert
 $idCategoria = $_POST['optTipoTag'];
 $numeroTag = $_POST['numTag'];
+$senha = $_POST['txtSenha'];
 
 // evitar sql inject
 $idCategoria = mysqli_real_escape_string($link, $idCategoria);
 $numeroTag = mysqli_real_escape_string($link, $numeroTag);
+$senha = mysqli_real_escape_string($link, $senha);
 
 // montagem da query
-$query = "INSERT INTO tag (id_categoria, codigo) VALUES (".$idCategoria.", ".$numeroTag.")";
+$query = "INSERT INTO tag (id_categoria, codigo, senha) VALUES (".$idCategoria.", ".$numeroTag.", MD5('".$senha."'))";
 
 // Executa a query
 $inserir = mysqli_query($link, $query);

@@ -54,6 +54,10 @@
 							?>							
 						</select>
 						</div>
+						<div class="form-group col-xs-4">
+						<label for="txtSenha">Senha:</label>
+						<input type="password" class="form-control" id="txtSenha" name="txtSenha" required>
+					</div>
 				</div>
 				
 				<div class="row">
