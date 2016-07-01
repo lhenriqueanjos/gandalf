@@ -122,10 +122,10 @@
 										<input type="checkbox" name="listaPermissoes[]" value="<?=$linhaPermissao['id']?>" />
 									</td>
 									<td><?=$linhaPermissao['nomeSala']?></td>
-									<td><?=$linhaPermissao['data_inicio_permissao']?></td> 
-									<td><?=$linhaPermissao['data_fim_permissao']?></td>
-									<td><?=$linhaPermissao['hora_inicio']?></td> 
-									<td><?=$linhaPermissao['hora_fim']?></td>
+									<td><?= date_format(date_create($linhaPermissao['data_inicio_permissao']), 'd/m/Y')?></td> 
+									<td><?= date_format(date_create($linhaPermissao['data_fim_permissao']), 'd/m/Y')?></td>
+									<td><?= date_format(date_create($linhaPermissao['hora_inicio']), 'H:i')?></td> 
+									<td><?= date_format(date_create($linhaPermissao['hora_fim']), 'H:i')?></td>
 
 									<td><?= ($linhaPermissao['dom'] == '1') ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' ?></td>
 									<td><?= ($linhaPermissao['seg'] == '1') ? '<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>' : '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>' ?></td>

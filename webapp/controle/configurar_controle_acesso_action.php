@@ -31,15 +31,17 @@ $dataFim = mysqli_real_escape_string($link, $dataFim);
 $horaInicio = date("H:i:s", strtotime($horaInicio));
 $horaFim = date("H:i:s", strtotime($horaFim));
 $dataInicio = date("Y-m-d", strtotime($dataInicio));
-$dataFim = date("Y-m-d", strtotime($dataFim));
-
-echo $horaInicio . " ". $dataInicio ;
+if (empty($dataFim)) {
+	$dataFim = "null";
+} else {
+	$dataFim = "'".date("Y-m-d", strtotime($dataFim))."'";
+}
 
 // aqui
 // montagem da query
 $query = "INSERT INTO permissao (id_tag, id_sala, hora_inicio, hora_fim, data_inicio_permissao, data_fim_permissao, 
 	domingo, segunda, terca, quarta, quinta, sexta, sabado) 
-	VALUES ($idTag, $idSala, '$horaInicio', '$horaFim', '$dataInicio', '$dataFim',
+	VALUES ($idTag, $idSala, '$horaInicio', '$horaFim', '$dataInicio', $dataFim, 
 	$domingo, $segunda, $terca, $quarta, $quinta, $sexta, $sabado)";
 
 // Executa a query
