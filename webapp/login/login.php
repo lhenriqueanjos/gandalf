@@ -3,7 +3,7 @@
 $naoEncontrado = false;
 
 if (isset($_GET["naoEncontrado"])){
-$naoEncontrado = true;
+	$naoEncontrado = true;
 }
 
 ?>

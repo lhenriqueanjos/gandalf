@@ -141,7 +141,8 @@ if (isset($_POST)) {
 	// montagem da query
 	$query = "SELECT cpf
 			FROM usuario
-			WHERE cpf = $cpf";
+			WHERE cpf = $cpf 
+			and status = 1";
 
 	// Executa a query
 	$resultado = mysqli_query($link, $query);

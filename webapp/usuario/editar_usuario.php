@@ -19,7 +19,8 @@
 			// montagem da query
 			$query = "SELECT id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto 
 					FROM usuario 
-					WHERE id = $auxiliar";
+					WHERE id = $auxiliar 
+					and status = 1";
 					
 			// Executa a query
 			$result = mysqli_query($link, $query);

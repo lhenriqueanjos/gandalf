@@ -12,7 +12,7 @@ $login = mysqli_real_escape_string($link, $login);
 $senha = mysqli_real_escape_string($link, $senha);
 
 // verificar no cadastro de usuários
-$query = "SELECT id, nome, id_categoria FROM usuario WHERE email = '".$login."' AND senha = MD5('".$senha."')";
+$query = "SELECT id, nome, id_categoria FROM usuario WHERE email = '".$login."' AND senha = MD5('".$senha."') AND status = 1";
 
 $resultado = mysqli_query($link, $query) or die(mysqli_error());
 

@@ -24,7 +24,7 @@
 	}
 
 	// query para carregar os dados do usuario logado
-	$sql2 = "SELECT nome FROM usuario WHERE id = $idUsuario";
+	$sql2 = "SELECT nome FROM usuario WHERE id = $idUsuario and status = 1";
 	$result2 = mysqli_query($link, $sql2);
 	$total2 = mysqli_num_rows($result2);
 	if($total2 > 0){
