@@ -112,7 +112,7 @@
 						</table>
 						<?php 
 							} else { 
-							// caso não tenha pesquisado ou a pesquisa não tiver resultados, exibe mensagem amigável
+							// caso não tenha pesquisado ou a pesquisa não tiver resultados, exibe mensagem amigável.
 						?>
 							<span>
 								Nenhum registro para exibir.

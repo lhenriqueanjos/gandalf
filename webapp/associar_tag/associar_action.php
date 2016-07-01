@@ -10,7 +10,6 @@
 	// abrir conexão
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
-	// montagem da query
 	$query = "INSERT INTO rel_usuario_tag (id_usuario, id_tag) VALUES ($idUser, $idTagUser)";
 
 	// Executa a query

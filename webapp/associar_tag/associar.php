@@ -16,7 +16,7 @@
 	$result = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($result); 
 
-	// query para carregar os dados do usuario selecionado
+	// query para carregar os dados do usuario selecionado.
 	$arr = $_POST['listaUsuarios'];
 	foreach ($arr as $auxiliar) {
 

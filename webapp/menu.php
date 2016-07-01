@@ -40,6 +40,9 @@
 
 		<?php if ($categoria == 'ADMINISTRADOR') { ?>
 			<!-- Controle de Acesso -->
+			<li role="presentation" class="<?php if ($current_page == "controleacesso") { echo 'active'; } ?>">
+				<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/controle/controle_acesso.php">Controle de Acesso</a>
+			</li>
 		<?php } ?>
 
 		<?php if ($categoria == 'ADMINISTRADOR') { ?>
