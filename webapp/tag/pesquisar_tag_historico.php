@@ -2,14 +2,12 @@
 
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
-$sql = "SELECT DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data_hora, id_sala, id FROM acesso ORDER BY data_hora DESC"; // TODO -> associar ao usuário logado, para puxar o histórico correto
-
-// este sql abaixo foi feito para substituir esse de cima, mas tem algum erro aparentemente. Com ele o historico é filtrado de acordo com o usuario
-// $sql = "SELECT DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data_hora, acesso.id_sala, acesso.id
-		// FROM rel_usuario_tag
-		// JOIN acesso
-		// ON acesso.id_tag = rel_usuario_tag.id_tag
-		// WHERE rel_usuario_tag.id_tag = $idUsuario"; // TODO -> associar ao usuário logado, para puxar o histórico correto
+$sql = "SELECT DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data_hora, acesso.id_sala, acesso.id
+		FROM rel_usuario_tag
+		JOIN acesso
+		ON acesso.id_tag = rel_usuario_tag.id_tag
+		WHERE rel_usuario_tag.id_tag = $idUsuario
+		ORDER BY data_hora DESC";
 
 $result = mysqli_query($link, $sql);
 
