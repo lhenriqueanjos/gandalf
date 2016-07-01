@@ -10,11 +10,40 @@
 	// query para carregar a tabela de tags
 	$sql = "SELECT id, codigo FROM tag"; // TODO -> associar ao usuário logado, para puxar o histórico correto
 	$result = mysqli_query($link, $sql);
-
 	$total = mysqli_num_rows($result);
-    
     $row = mysqli_fetch_assoc($result); 
+
+	// query para carregar a id da tag do usuario logado
+	$sql1 = "SELECT id_tag FROM rel_usuario_tag WHERE id_usuario = $idUsuario";
+	$result1 = mysqli_query($link, $sql1);
+	$total1 = mysqli_num_rows($result1);
+	if($total1 > 0){
+		$row1 = mysqli_fetch_assoc($result1);
+	}else{
+		$row1 = NULL;
+	}
+
+	// query para carregar os dados do usuario logado
+	$sql2 = "SELECT nome FROM usuario WHERE id = $idUsuario";
+	$result2 = mysqli_query($link, $sql2);
+	$total2 = mysqli_num_rows($result2);
+	if($total2 > 0){
+		$row2 = mysqli_fetch_assoc($result2);
+	}else{
+		$row2 = NULL;
+	}
 	
+	// query para carregar tipo da tag do usuario logado
+	$sqlForm1 = "SELECT categoria_usuario.tipo
+				FROM rel_usuario_tag
+				JOIN usuario
+				ON rel_usuario_tag.id_usuario = usuario.id
+				JOIN categoria_usuario
+				ON categoria_usuario.id = usuario.id_categoria
+				WHERE rel_usuario_tag.id_usuario = $idUsuario";
+	$resultForm1 = mysqli_query($link, $sqlForm1);		
+	$rowForm1 = mysqli_fetch_assoc($resultForm1);
+
 	$var1 = NULL;
 	$var2 = NULL;
 	$var3 = 2; // TODO -> Substituir esse numero "2" pelo ID do usuario que esta logado
@@ -54,12 +83,12 @@
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="selTAG">Chave:</label>
-						<select class="form-control" id="selTAG" name="opt">
-							<option value="" selected>selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
+						<select class="form-control" id="selTAG" name="opt" <?php if($categoria != "ADMINISTRADOR"){ echo "disabled";} ?>>
+							<option value="">selecione </option> <!- Quando o login tiver implementado, fazer o value receber o id do usuario logado? ->
 							<?php
 								do {
 							?>
-							<option value="<?=$row['id']?>"><?=$row['codigo']?></option>
+							<option value="<?=$row['id']?>" <?php if($categoria != "ADMINISTRADOR"){if(isset($row1['id_tag'])){if($row['id'] == $row1['id_tag']){ echo "selected";}}} ?>><?=$row['codigo']?></option>
 							<?php
 								}while($row = mysqli_fetch_assoc($result));
 								
@@ -72,9 +101,11 @@
 				
 				<div class="row">
 					<div class="form-group col-xs-12">
+						<?php if($categoria == "ADMINISTRADOR"){ ?>
 						<button type="submit" class="btn btn-default" onclick="valida()">
 							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Selecionar
 						</button>
+						<?php } ?>
 					</div>
 				</div>
 			</form>
@@ -83,11 +114,11 @@
 				<div class="row">
 					<div class="form-group col-xs-5">
 						<label for="txtNomeAp">Nome:</label>
-						<input type="text" class="form-control" id="txtNomeAp" value="<?=$var1 ?>" disabled> 
+						<input type="text" class="form-control" id="txtNomeAp" value="<?php if(($categoria != "ADMINISTRADOR") && (isset($row1['id']))){ echo $row2['nome'];}else{ echo $var1;} ?>" disabled> 
 					</div>
 					<div class="form-group col-xs-3">
 						<label for="txtTipoAp">Tipo:</label>
-						<input type="text" class="form-control" id="txtTipoAp" value="<?=$var2 ?>" disabled>
+						<input type="text" class="form-control" id="txtTipoAp" value="<?php if(($categoria != "ADMINISTRADOR") && (isset($row1['id']))){ echo $rowForm1['tipo'];}else{ echo $var2;} ?>" disabled>
 					</div>
 				</div>
 			</form>
