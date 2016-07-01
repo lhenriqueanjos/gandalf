@@ -7,18 +7,18 @@
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
 	// carregar os dados do usuário
-		// montagem da query
-		$query = "SELECT * FROM usuario WHERE id = $idUsuario";
-				
-		// Executa a query
-		$result = mysqli_query($link, $query);			
-		$row = mysqli_fetch_assoc($result); 
+	// montagem da query
+	$query = "SELECT * FROM usuario WHERE id = $idUsuario AND status = 1";
+			
+	// Executa a query
+	$result = mysqli_query($link, $query);			
+	$row = mysqli_fetch_assoc($result); 
 
-		if (isset($row['foto'])){
-			$caminhoFoto = "fotos/".$row['foto'];
-		}else{
-			$caminhoFoto = NULL;
-		}
+	if (isset($row['foto'])){
+		$caminhoFoto = "fotos/".$row['foto'];
+	}else{
+		$caminhoFoto = NULL;
+	}
 	
 	function Mask($mask,$str){
 
@@ -52,8 +52,11 @@
 					<?php if(!empty($row['departamento'])){ ?><br>Departamento: <?= $row['departamento'] ?><?php } ?>
 					<?php if(!empty($row['rua'])){ ?><br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?><?php } ?>
 					<?php	
+						if ($row['cep']){
 						$cep = $row['cep'];
-						$cep = Mask("##.###-###",$cep); 
+						$cep = Mask("##.###-###",$cep);
+						//echo ' - '.Mask("##.###-###", $cep); 
+						}
 					?>
 					<?php if(!empty($row['cep'])){ echo " - ".$cep; } ?>
 					<br>Contato: 

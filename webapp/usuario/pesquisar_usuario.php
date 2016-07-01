@@ -34,6 +34,8 @@
 			$query = $query.$whereAnd." matricula = ".$matriculaUsuario." ";
 		}
 
+		$query = $query.$whereAnd." status = 1 ";
+
 		$query = $query."order by nome;";
 
 		$resultado = mysqli_query($link, $query) or die(mysql_error());

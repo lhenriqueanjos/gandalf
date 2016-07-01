@@ -20,7 +20,7 @@
 	$arr = $_POST['listaUsuarios'];
 	foreach ($arr as $auxiliar) {
 
-		$sqlUsuario = "SELECT * FROM usuario WHERE id = $auxiliar";
+		$sqlUsuario = "SELECT * FROM usuario WHERE id = $auxiliar and status = 1";
 		$resultUsuario = mysqli_query($link, $sqlUsuario);
 		$rowUsuario = mysqli_fetch_assoc($resultUsuario);
 	}

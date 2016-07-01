@@ -95,7 +95,7 @@ CREATE TABLE `rel_usuario_tag` (
   `id_usuario` int(11) DEFAULT NULL,
   `id_tag` int(11) DEFAULT NULL,
   `data_inicio` datetime DEFAULT CURRENT_TIMESTAMP,
-  `data_fim` datetime DEFAULT CURRENT_TIMESTAMP,
+  `data_fim` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_rel_usuario_tag_tag` (`id_tag`),
   KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
