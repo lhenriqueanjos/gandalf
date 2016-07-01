@@ -2,13 +2,17 @@
 
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
 
-$sql = "SELECT DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data_hora, id_sala FROM acesso ORDER BY data_hora DESC"; // TODO -> associar ao usuário logado, para puxar o histórico correto
-$result = mysqli_query($link, $sql);
+$sql = "SELECT DATE_FORMAT(data_hora, '%d/%m/%Y %H:%i:%s') as data_hora, acesso.id_sala, acesso.id
+		FROM rel_usuario_tag
+		JOIN acesso
+		ON acesso.id_tag = rel_usuario_tag.id_tag
+		WHERE rel_usuario_tag.id_tag = $idUsuario
+		ORDER BY data_hora DESC"; // TODO -> associar ao usuário logado, para puxar o histórico correto$result = mysqli_query($link, $sql);
 
 $count = 0;
+$result = mysqli_query($link, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         if ($count < 5){
 		echo "<tr>";
@@ -20,6 +24,8 @@ if (mysqli_num_rows($result) > 0) {
 		$count++;
 		}
     }
+}else{
+	echo "Não há acessos recentes!";
 } 
 
 ?>
