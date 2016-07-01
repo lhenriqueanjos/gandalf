@@ -27,7 +27,9 @@
 		<?php } ?>
 
 		<?php if ($categoria == 'ADMINISTRADOR') { ?>
-			<!-- Associar TAG -->
+			<li role="presentation" class="<?php if ($current_page == "associartag") { echo 'active'; } ?>">
+				<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/associar_tag/pesquisa.php">Associar TAG</a>
+			</li>
 		<?php } ?>
 
 		<?php if ($categoria == 'ADMINISTRADOR' || $categoria == 'CLIENTE') { ?>
