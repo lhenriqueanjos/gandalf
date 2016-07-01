@@ -37,7 +37,6 @@ if (empty($dataFim)) {
 	$dataFim = "'".date("Y-m-d", strtotime($dataFim))."'";
 }
 
-// aqui
 // montagem da query
 $query = "INSERT INTO permissao (id_tag, id_sala, hora_inicio, hora_fim, data_inicio_permissao, data_fim_permissao, 
 	domingo, segunda, terca, quarta, quinta, sexta, sabado) 
