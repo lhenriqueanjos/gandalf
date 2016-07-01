@@ -129,11 +129,6 @@
 						<?php 
 							} 
 						?>
-
-						<div class="row">
-							<div class="form-group col-xs-12">
-							</div>
-						</div>
 					</div>
 				</div>
 				
