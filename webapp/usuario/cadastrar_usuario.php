@@ -123,6 +123,10 @@ if (isset($_POST)) {
 
   if(!empty($_POST["txtTelefone"])) {
 	$telefone = verifica_campo($_POST["txtTelefone"]);
+	$telefone = str_replace("(", "", $telefone);
+	$telefone = str_replace(")", "", $telefone);
+	$telefone = str_replace("-", "", $telefone);
+	$telefone = str_replace(" ", "", $telefone);
   } else {
 	  $telefone = NULL;
   }

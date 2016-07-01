@@ -15,10 +15,10 @@ $result = mysqli_query($link, $sql);
 if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
         if ($count < 5){
-		echo "<tr>";
 		$queryCategoria = "SELECT nome FROM sala WHERE id = ".$row['id_sala']." ";
 		$resultado2 = mysqli_query($link, $queryCategoria) or die(mysqli_error($link));
 		$linha = mysqli_fetch_assoc($resultado2);
+		echo "<tr>";
 		echo "<td>" .$row["data_hora"]. "</td><td>" .$linha["nome"]. "</td>";
 		echo "</tr>";
 		$count++;

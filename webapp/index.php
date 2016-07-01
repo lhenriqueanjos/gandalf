@@ -48,17 +48,21 @@
 				</div>
 				<div class="panel-body">
 					Nome: <?= $row['nome'] ?>
-					<br>Matricula: <?= $row['matricula'] ?>
-					<br>Departamento: <?= $row['departamento'] ?>
-					<br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?>
+					<?php if(!empty($row['matricula'])){ ?><br>Matricula: <?= $row['matricula'] ?> <?php } ?>
+					<?php if(!empty($row['departamento'])){ ?><br>Departamento: <?= $row['departamento'] ?><?php } ?>
+					<?php if(!empty($row['rua'])){ ?><br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?><?php } ?>
 					<?php	
+						if ($row['cep']){
 						$cep = $row['cep'];
-						echo ' - '.Mask("##.###-###", $cep); 
+						$cep = Mask("##.###-###",$cep);
+						//echo ' - '.Mask("##.###-###", $cep); 
+						}
 					?>
+					<?php if(!empty($row['cep'])){ echo " - ".$cep; } ?>
 					<br>Contato: 
 					<?php	
 						$fone = $row['telefone'];
-						echo ' - '.Mask("(##) ####-####",$fone).' / '; 
+						echo Mask("(##) ####-####",$fone).' / '; 
 					?>
 					<?= $row['email'] ?>
 					<?php	
