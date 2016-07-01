@@ -118,7 +118,27 @@ if (isset($_POST)) {
 		$erro_email = "Formato de email inválido"; 
 	} else{
 		$email = verifica_campo($_POST["txtEmail"]);
-	}
+		
+		require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
+		
+		// montagem da query
+		$query = "SELECT email
+				FROM usuario
+				WHERE email = '$email'";
+
+		// Executa a query
+		$resultado = mysqli_query($link, $query);
+		$total = mysqli_num_rows($resultado);
+		
+		if ($total > 0){
+			$erro = true;
+			$erro_email = "E-mail já cadastrado";
+		}else{
+			
+			$erro_email = false;
+		}
+			
+		}
   }
 
   if(!empty($_POST["txtTelefone"])) {

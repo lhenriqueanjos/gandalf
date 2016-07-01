@@ -67,6 +67,7 @@ CREATE TABLE `usuario` (
 SELECT * FROM gandalf.categoria_usuario;
 
 ALTER TABLE `usuario` ADD UNIQUE(`cpf`);
+ALTER TABLE `usuario` ADD UNIQUE(`email`);
  
 CREATE TABLE `permissao` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
