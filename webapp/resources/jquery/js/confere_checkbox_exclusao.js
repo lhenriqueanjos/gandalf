@@ -20,12 +20,15 @@ for(i=0;i<inputs.length;i++){
 if (checados == 0){
 
 	alert("Você não selecionou nenhum registro!");	
-	var mudar = document.getElementById('formDados');
-	mudar.setAttribute('onsubmit', 'return false');
+	// var mudar = document.getElementById('formDados');
+	// mudar.setAttribute('onsubmit', 'return false');
+
+	$("form").attr('onsubmit', 'return false');
 
 }else{
-	var mudar = document.getElementById('formDados');
-	mudar.setAttribute('onsubmit', 'return true');
+	// var mudar = document.getElementById('formDados');
+	// mudar.setAttribute('onsubmit', 'return true');
+	$("form").attr('onsubmit', 'return true');
 }
 
 }

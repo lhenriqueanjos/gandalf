@@ -179,14 +179,13 @@
 							if($totalPermissao > 0) {
 							?>
 
-							<!-- Botões exibidos apenas se tiver registros na tabela 
-							<button type="submit" class="btn btn-default" formaction="editar_sala.php" onclick="testaCheck()">
+							<!-- Botões exibidos apenas se tiver registros na tabela -->
+							<button type="submit" class="btn btn-default" formaction="editar_controle_acesso.php" onclick="testaCheck()">
 								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
 							</button>
-							<button type="submit" class="btn btn-default" formaction="excluir_sala.php" onclick="testaCheckExc()">
+							<button type="submit" class="btn btn-default" formaction="excluir_controle_acesso.php" onclick="testaCheckExc()">
 								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Excluir
 							</button>
-							-->
 						<?php 
 								}
 							} 
