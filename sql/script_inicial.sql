@@ -96,12 +96,15 @@ CREATE TABLE `rel_usuario_tag` (
   `id_tag` int(11) DEFAULT NULL,
   `data_inicio` date DEFAULT NULL,
   `hora_inicio` time DEFAULT NULL,
+  `data_fim` date DEFAULT NULL,
+  `hora_fim` time DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_rel_usuario_tag_tag` (`id_tag`),
   KEY `fk_rel_usuario_tag_usuario` (`id_usuario`),
   CONSTRAINT `fk_rel_usuario_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tag` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_rel_usuario_tag_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE IF NOT EXISTS `pais` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
