@@ -42,29 +42,31 @@
 				</div>
 			</div>
 			<?php if (isset($idUsuario)){ ?>
-			<div class="panel panel-heading">
-				<div class="panel-default">
-					<h3 class="panel-title">Informações</h3>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Informações do usuário</h3>
 				</div>
-				<br>Nome: <?= $row['nome'] ?>
-				<br>Matricula: <?= $row['matricula'] ?>
-				<br>Departamento: <?= $row['departamento'] ?>
-				<br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?>
-				<?php	
-					$cep = $row['cep'];
-					echo ' - '.Mask("##.###-###",$cep); 
-				?>
-				<br>Contato: 
-				<?php	
-					$fone = $row['telefone'];
-					echo ' - '.Mask("(##) ####-####",$fone).' / '; 
-				?>
-				<?= $row['email'] ?>
-				<?php	
-					$cpf = $row['cpf'];
-					echo '<BR>Documento: '.Mask("###.###.###-##",$cpf); 
-				?>
+				<div class="panel-body">
+					Nome: <?= $row['nome'] ?>
+					<br>Matricula: <?= $row['matricula'] ?>
+					<br>Departamento: <?= $row['departamento'] ?>
+					<br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?>
+					<?php	
+						$cep = $row['cep'];
+						echo ' - '.Mask("##.###-###",$cep); 
+					?>
+					<br>Contato: 
+					<?php	
+						$fone = $row['telefone'];
+						echo ' - '.Mask("(##) ####-####",$fone).' / '; 
+					?>
+					<?= $row['email'] ?>
+					<?php	
+						$cpf = $row['cpf'];
+						echo '<BR>Documento: '.Mask("###.###.###-##",$cpf); 
+					?>
 				
+				</div>
 			</div>
 			<?php }else{ ?>
 			<div class="panel-heading">
@@ -73,18 +75,10 @@
 			<?php } ?>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Últimos 5 acessos</h3>
+					<h3 class="panel-title">Últimos acessos</h3>
 				</div>
 				<div class="panel-body">
-					<table class="table table-bordered table-hover">
-						<thead>
-							<th>Acesso</th>
-							<th>Local</th>
-						</thead>
-						<tbody>
-						<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/index_historico.php";  ?>
-						</tbody>
-					</table>
+					<?php include $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/index_historico.php";  ?>
 				</div>
 			</div>
 		</div>
