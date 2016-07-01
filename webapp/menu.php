@@ -1,6 +1,10 @@
 <div class="col-xs-2">
+
+<?php
+	if (isset($_SESSION['login'])) {
+?>
+
 	<ul class="nav nav-pills nav-stacked">
-		
 
 		<li role="presentation" class="<?php if ($current_page == "index") { echo 'active'; } ?>">
 			<a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/">Início</a>
@@ -51,4 +55,8 @@
 			</li>
 		<?php } ?>
 	</ul>
+
+<?php
+	}
+?>
 </div>

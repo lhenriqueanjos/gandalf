@@ -1,13 +1,24 @@
 <?php  
 	session_start();
-	if((!isset ($_SESSION['login']) == true)) {
-		header('location:/gandalf/webapp/login/login.php');
+	
+	$logado = NULL;
+	$categoria = NULL;
+	$idUsuario = NULL;
+	$idTag = NULL;
+
+	$cadastroAberto = NULL;
+	if (isset($_GET['aberto'])) {
+		$cadastroAberto = $_GET['aberto'];
 	}
 
-	$logado = $_SESSION['nomeUsuario'];
-	$categoria = $_SESSION['categoria'];
-	$idUsuario = $_SESSION['idUsuario'];
-	$idTag = $_SESSION['idTag'];
+	if (!isset($_SESSION['login']) and $cadastroAberto != "true") {
+		header('location:/gandalf/webapp/login/login.php');
+	} else {
+		$logado = $_SESSION['nomeUsuario'];
+		$categoria = $_SESSION['categoria'];
+		$idUsuario = $_SESSION['idUsuario'];
+		$idTag = $_SESSION['idTag'];
+	}
 ?>
 <html>
 <head>
@@ -34,8 +45,14 @@
 					<h1 >Sistema de Controle de Acesso</h1>
 				</div>
 				<div class="col-xs-4 text-right">
+					<?php
+						if (isset($logado)) {
+					?>
 					<h5>Bem-vindo, <?=$logado?>!</h5>
 					<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/login/logout.php">Sair</a></h5>
+					<?php
+						}
+					?>
 				</div>
 			</div>
 		</div>

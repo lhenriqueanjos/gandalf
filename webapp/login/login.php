@@ -76,7 +76,7 @@ if (isset($_GET["naoEncontrado"])){
 						</div>
 					</form>
 
-					<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/cadastrar_usuario.php">Novo usuário? Solicite seu cadastro aqui.</a></h5>
+					<h5><a href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/usuario/cadastrar_usuario.php?aberto=true">Novo usuário? Solicite seu cadastro aqui.</a></h5>
 				</div>
 			</div>
 		</div>	

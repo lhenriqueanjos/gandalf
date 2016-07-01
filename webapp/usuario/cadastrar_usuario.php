@@ -5,7 +5,7 @@ require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
 
 if (!isset($_POST["txtHidden"])) {
-	unset($_SERVER);
+	unset($_POST);
 }
 
 function verifica_campo($texto) {
@@ -245,6 +245,7 @@ if ((!empty($foto["name"])) && !$erro) {
 	$departamento = mysqli_real_escape_string($link, $departamento);
 	$senha = mysqli_real_escape_string($link, $senha);
 	$tipo = mysqli_real_escape_string($link, $tipo);
+	$tipo = (empty($tipo)) ? '2' : $tipo;
 
 	// montagem da query
 	$query = "INSERT INTO usuario (id_categoria, matricula, nome, departamento, rua, numero, bairro, cep, cidade, estado, telefone, cpf, email, foto, senha) VALUES (".$tipo.", ".$matricula.", '".$nome."', '".$departamento."', '".$rua."', ".$numero.", '".$bairro."', '".$cep."', '".$cidade."', '".$estado."', '".$telefone."', '".$cpf."', '".$email."', '".$nome_imagem."', MD5('".$senha."'))";
@@ -347,7 +348,7 @@ if ((!empty($foto["name"])) && !$erro) {
 					</div>
 					<div class="form-group col-xs-6">
 						<label for="txtCPF">CPF:</label>
-						<input type="text" class="form-control" id="cpf" name="txtCPF" maxlength="11" onKeyPress="jQuery();" required="required" value="<?php echo $cpf; ?>">
+						<input type="text" class="form-control" id="cpf" name="txtCPF" maxlength="11" onKeyPress="jQuery();" required="required" value="<?= $cpf; ?>">
 					</div>
 				</div>
 				<div class="row">
