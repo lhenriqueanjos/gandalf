@@ -126,9 +126,11 @@
 						<button type="submit" class="btn btn-default" onclick="valida_form(this)">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Incluir
 						</button>
-						<button type="submit" class="btn btn-default" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/tag/cadastrar_tag.php">
+						<!-- TODO ver o que fazer com esse botão
+						<button type="submit" class="btn btn-default" formaction="<?php $_SERVER["DOCUMENT_ROOT"] ?>/gandalf/webapp/tag/cadastrar_tag.php" formnovalidate>
 							<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Cancelar
 						</button>
+						-->
 					</div>
 				</div>
 			</form>
