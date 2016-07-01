@@ -2,6 +2,35 @@
 	$current_page = "index";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/header.php";
 	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/menu.php";
+	
+	// abre a conexão
+	require $_SERVER["DOCUMENT_ROOT"]. "/gandalf/webapp/conexao.php";
+
+	// carregar os dados do usuário
+		// montagem da query
+		$query = "SELECT * FROM usuario WHERE id = $idUsuario";
+				
+		// Executa a query
+		$result = mysqli_query($link, $query);			
+		$row = mysqli_fetch_assoc($result); 
+
+		if (isset($row['foto'])){
+			$caminhoFoto = "fotos/".$row['foto'];
+		}else{
+			$caminhoFoto = NULL;
+		}
+	
+	function Mask($mask,$str){
+
+    $str = str_replace(" ","",$str);
+
+    for($i=0;$i<strlen($str);$i++){
+        $mask[strpos($mask,"#")] = $str[$i];
+    }
+
+    return $mask;
+}
+
 ?>
 
 		<div class="col-xs-10">
@@ -12,6 +41,36 @@
 					</ol>
 				</div>
 			</div>
+			<?php if (isset($idUsuario)){ ?>
+			<div class="panel panel-heading">
+				<div class="panel-default">
+					<h3 class="panel-title">Informações</h3>
+				</div>
+				<br>Nome: <?= $row['nome'] ?>
+				<br>Matricula: <?= $row['matricula'] ?>
+				<br>Departamento: <?= $row['departamento'] ?>
+				<br>Endereço: <?= $row['rua'] ?>, <?= $row['numero'] ?>, <?= $row['bairro'] ?> - <?= $row['cidade'] ?>-<?= $row['estado'] ?>
+				<?php	
+					$cep = $row['cep'];
+					echo ' - '.Mask("##.###-###",$cep); 
+				?>
+				<br>Contato: 
+				<?php	
+					$fone = $row['telefone'];
+					echo ' - '.Mask("(##) ####-####",$fone).' / '; 
+				?>
+				<?= $row['email'] ?>
+				<?php	
+					$cpf = $row['cpf'];
+					echo '<BR>Documento: '.Mask("###.###.###-##",$cpf); 
+				?>
+				
+			</div>
+			<?php }else{ ?>
+			<div class="panel-heading">
+				<h3 class="panel-title">Não há um usuário associado a esta Tag.</h3>
+			</div>
+			<?php } ?>
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Últimos 5 acessos</h3>
